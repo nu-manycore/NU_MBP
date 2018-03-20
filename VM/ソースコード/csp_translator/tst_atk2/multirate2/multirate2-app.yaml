@@ -1,0 +1,150 @@
+Ecuc:
+  Os:
+    OsInclude:
+      OsIncludeFileName: multirate2-app.h
+    OsOS:
+      OsNumberOfCores: 2
+    multirate2_AppMode:
+      DefinitionRef: OsAppMode
+    multirate2_WakeupEvent:
+      DefinitionRef: OsEvent
+    multirate2_InputEvent:
+      DefinitionRef: OsEvent
+    multirate2_OutputEvent:
+      DefinitionRef: OsEvent
+    multirate2_CompleteEvent:
+      DefinitionRef: OsEvent
+    multirate2_Core1_1000_0_Task:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: multirate2_Core1_1000_0_Task_Priority
+      OsTaskStackSize: multirate2_Core1_1000_0_Task_Stack
+      OsTaskSchedule: FULL
+      OsTaskAutostart:
+        OsTaskAppModeRef:
+          - /Ecuc/Os/multirate2_AppMode
+      OsTaskEventRef:
+        - /Ecuc/Os/multirate2_WakeupEvent
+        - /Ecuc/Os/multirate2_InputEvent
+        - /Ecuc/Os/multirate2_OutputEvent
+        - /Ecuc/Os/multirate2_CompleteEvent
+    multirate2_Core2_1000_0_Task:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: multirate2_Core2_1000_0_Task_Priority
+      OsTaskStackSize: multirate2_Core2_1000_0_Task_Stack
+      OsTaskSchedule: FULL
+      OsTaskAutostart:
+        OsTaskAppModeRef:
+          - /Ecuc/Os/multirate2_AppMode
+      OsTaskEventRef:
+        - /Ecuc/Os/multirate2_WakeupEvent
+        - /Ecuc/Os/multirate2_InputEvent
+        - /Ecuc/Os/multirate2_OutputEvent
+        - /Ecuc/Os/multirate2_CompleteEvent
+    multirate2_Core1_2000_0_Task:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: multirate2_Core1_2000_0_Task_Priority
+      OsTaskStackSize: multirate2_Core1_2000_0_Task_Stack
+      OsTaskSchedule: FULL
+      OsTaskAutostart:
+        OsTaskAppModeRef:
+          - /Ecuc/Os/multirate2_AppMode
+      OsTaskEventRef:
+        - /Ecuc/Os/multirate2_WakeupEvent
+        - /Ecuc/Os/multirate2_InputEvent
+        - /Ecuc/Os/multirate2_OutputEvent
+        - /Ecuc/Os/multirate2_CompleteEvent
+    multirate2_Core1_3000_0_Task:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: multirate2_Core1_3000_0_Task_Priority
+      OsTaskStackSize: multirate2_Core1_3000_0_Task_Stack
+      OsTaskSchedule: FULL
+      OsTaskAutostart:
+        OsTaskAppModeRef:
+          - /Ecuc/Os/multirate2_AppMode
+      OsTaskEventRef:
+        - /Ecuc/Os/multirate2_WakeupEvent
+        - /Ecuc/Os/multirate2_InputEvent
+        - /Ecuc/Os/multirate2_OutputEvent
+        - /Ecuc/Os/multirate2_CompleteEvent
+    multirate2_Core2_3000_0_Task:
+      DefinitionRef: OsTask
+      OsTaskActivation: 1
+      OsTaskPriority: multirate2_Core2_3000_0_Task_Priority
+      OsTaskStackSize: multirate2_Core2_3000_0_Task_Stack
+      OsTaskSchedule: FULL
+      OsTaskAutostart:
+        OsTaskAppModeRef:
+          - /Ecuc/Os/multirate2_AppMode
+      OsTaskEventRef:
+        - /Ecuc/Os/multirate2_WakeupEvent
+        - /Ecuc/Os/multirate2_InputEvent
+        - /Ecuc/Os/multirate2_OutputEvent
+        - /Ecuc/Os/multirate2_CompleteEvent
+    multirate2_Core1_1000_0_Alarm:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/SwCnt0
+      OsAlarmAction:
+        OsAlarmSetEvent:
+          OsAlarmSetEventTaskRef: /Ecuc/Os/multirate2_Core1_1000_0_Task
+          OsAlarmSetEventRef: /Ecuc/Os/multirate2_WakeupEvent
+    multirate2_Core2_1000_0_Alarm:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/SwCnt0
+      OsAlarmAction:
+        OsAlarmSetEvent:
+          OsAlarmSetEventTaskRef: /Ecuc/Os/multirate2_Core2_1000_0_Task
+          OsAlarmSetEventRef: /Ecuc/Os/multirate2_WakeupEvent
+    multirate2_Core1_2000_0_Alarm:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/SwCnt0
+      OsAlarmAction:
+        OsAlarmSetEvent:
+          OsAlarmSetEventTaskRef: /Ecuc/Os/multirate2_Core1_2000_0_Task
+          OsAlarmSetEventRef: /Ecuc/Os/multirate2_WakeupEvent
+    multirate2_Core1_3000_0_Alarm:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/SwCnt0
+      OsAlarmAction:
+        OsAlarmSetEvent:
+          OsAlarmSetEventTaskRef: /Ecuc/Os/multirate2_Core1_3000_0_Task
+          OsAlarmSetEventRef: /Ecuc/Os/multirate2_WakeupEvent
+    multirate2_Core2_3000_0_Alarm:
+      DefinitionRef: OsAlarm
+      OsAlarmCounterRef: /Ecuc/Os/SwCnt0
+      OsAlarmAction:
+        OsAlarmSetEvent:
+          OsAlarmSetEventTaskRef: /Ecuc/Os/multirate2_Core2_3000_0_Task
+          OsAlarmSetEventRef: /Ecuc/Os/multirate2_WakeupEvent
+    multirate2_OSAP_CORE0:
+      DefinitionRef: OsApplication
+      OsApplicationCoreAssignment: 0
+      OsAppTaskRef:
+        - /Ecuc/Os/multirate2_Core1_1000_0_Task
+        - /Ecuc/Os/multirate2_Core1_2000_0_Task
+        - /Ecuc/Os/multirate2_Core1_3000_0_Task
+      OsAppIsrRef: /Ecuc/Os/SwCntTimerHdr
+      OsAppCounterRef: /Ecuc/Os/SwCnt0
+      OsAppAlarmRef:
+        - /Ecuc/Os/multirate2_Core1_1000_0_Alarm
+        - /Ecuc/Os/multirate2_Core1_2000_0_Alarm
+        - /Ecuc/Os/multirate2_Core1_3000_0_Alarm
+        - /Ecuc/Os/multirate2_Core2_1000_0_Alarm
+        - /Ecuc/Os/multirate2_Core2_3000_0_Alarm
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false
+    multirate2_OSAP_CORE1:
+      DefinitionRef: OsApplication
+      OsApplicationCoreAssignment: 1
+      OsAppTaskRef:
+        - /Ecuc/Os/multirate2_Core2_1000_0_Task
+        - /Ecuc/Os/multirate2_Core2_3000_0_Task
+      OsApplicationHooks:
+        OsAppErrorHook: false
+        OsAppShutdownHook: false
+        OsAppStartupHook: false

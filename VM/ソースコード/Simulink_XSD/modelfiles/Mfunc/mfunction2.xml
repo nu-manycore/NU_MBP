@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="mfunction2" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Inport" name="mfunction2_y2" rate="-1">
+      <output line="mfunction2_y2_1" port="mfunction2_y2_1">
+         <connect block="mfunction2_mul1" port="mfunction2_mul1_2"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="mfunction2_MATLABFunction1">
+      <input line="mfunction2_mul1_1" port="mfunction2_MATLABFunction1_x">
+         <connect block="mfunction2_mul1" port="mfunction2_mul1_1"/>
+      </input>
+      <output line="mfunction2_MATLABFunction1_1" port="mfunction2_MATLABFunction1_y">
+         <connect block="mfunction2_y2_out" port="mfunction2_y2_out_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="mfunction2_MATLABFunction1_x" rate="-1">
+            <output line="mfunction2_MATLABFunction1_x_1" port="mfunction2_MATLABFunction1_x_1">
+               <connect block="mfunction2_MATLABFunction1_SFunction" port="mfunction2_MATLABFunction1_SFunction_1"/>
+            </output>
+         </block>
+         <block blocktype="Demux" name="mfunction2_MATLABFunction1_Demux">
+            <input line="mfunction2_MATLABFunction1_SFunction_1" port="mfunction2_MATLABFunction1_Demux_1">
+               <connect block="mfunction2_MATLABFunction1_SFunction" port="mfunction2_MATLABFunction1_SFunction_1"/>
+            </input>
+            <output line="mfunction2_MATLABFunction1_Demux_1" port="mfunction2_MATLABFunction1_Demux_1">
+               <connect block="mfunction2_MATLABFunction1_Terminator" port="mfunction2_MATLABFunction1_Terminator_1"/>
+            </output>
+         </block>
+         <block blocktype="S-Function" name="mfunction2_MATLABFunction1_SFunction">
+            <input line="mfunction2_MATLABFunction1_x_1" port="mfunction2_MATLABFunction1_SFunction_1">
+               <connect block="mfunction2_MATLABFunction1_x" port="mfunction2_MATLABFunction1_x_1"/>
+            </input>
+            <output line="mfunction2_MATLABFunction1_SFunction_1" port="mfunction2_MATLABFunction1_SFunction_1">
+               <connect block="mfunction2_MATLABFunction1_Demux" port="mfunction2_MATLABFunction1_Demux_1"/>
+            </output>
+            <output line="mfunction2_MATLABFunction1_SFunction_y" port="mfunction2_MATLABFunction1_SFunction_2">
+               <connect block="mfunction2_MATLABFunction1_y" port="mfunction2_MATLABFunction1_y_1"/>
+            </output>
+         </block>
+         <block blocktype="Terminator" name="mfunction2_MATLABFunction1_Terminator">
+            <input line="mfunction2_MATLABFunction1_Demux_1" port="mfunction2_MATLABFunction1_Terminator_1">
+               <connect block="mfunction2_MATLABFunction1_Demux" port="mfunction2_MATLABFunction1_Demux_1"/>
+            </input>
+         </block>
+         <block blocktype="Outport" name="mfunction2_MATLABFunction1_y" rate="-1">
+            <input line="mfunction2_MATLABFunction1_SFunction_y" port="mfunction2_MATLABFunction1_y_1">
+               <connect block="mfunction2_MATLABFunction1_SFunction" port="mfunction2_MATLABFunction1_SFunction_2"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Constant" name="mfunction2_k1" rate="inf">
+      <output line="mfunction2_k1_1" port="mfunction2_k1_1">
+         <connect block="mfunction2_mul1" port="mfunction2_mul1_1"/>
+      </output>
+   </block>
+   <block blocktype="Product" name="mfunction2_mul1" rate="-1">
+      <input line="mfunction2_k1_1" port="mfunction2_mul1_1">
+         <connect block="mfunction2_k1" port="mfunction2_k1_1"/>
+      </input>
+      <input line="mfunction2_y2_1" port="mfunction2_mul1_2">
+         <connect block="mfunction2_y2" port="mfunction2_y2_1"/>
+      </input>
+      <output line="mfunction2_mul1_1" port="mfunction2_mul1_1">
+         <connect block="mfunction2_MATLABFunction1" port="mfunction2_MATLABFunction1_x"/>
+      </output>
+   </block>
+   <block blocktype="Outport" name="mfunction2_y2_out" rate="-1">
+      <input line="mfunction2_MATLABFunction1_1" port="mfunction2_y2_out_1">
+         <connect block="mfunction2_MATLABFunction1" port="mfunction2_MATLABFunction1_y"/>
+      </input>
+   </block>
+</sm:blocks>

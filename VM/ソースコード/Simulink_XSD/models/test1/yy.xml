@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="models/test1/testsys_ert_rtw/testsys.h" size="3170" timestamp="2013-11-29T16:06:22+0900" type="c-header"/>
+  <file name="models/test1/xx.xml" size="3083" timestamp="2013-12-02T15:51:28+0900" type="xml"/>
+  <file name="models/test1/testsys_ert_rtw/testsys.c" size="1837" timestamp="2013-11-29T16:06:22+0900" type="c-source"/>
+  <file name="models/test1/testsys_ert_rtw/testsys_data.c" size="1017" timestamp="2013-11-29T16:06:22+0900" type="c-data"/>
+  <block blocktype="Inport" id="1" name="testsys_x">
+    <output line="line1" port="testsys_x_1">
+      <connect block="testsys_Subsystem" port="testsys_Subsystem_x1"/>
+    </output>
+    <var line="line1" mode="extin" name="line1" port="testsys_x_1" type="real_T"/>
+    <code file="models/test1/testsys_ert_rtw/testsys.c" line="66" type="init">  line1 = 0.0;
+</code>
+    <forward block="testsys_Subsystem_Sum" type="port">
+      <var line="line5" mode="input" name="line1" port="testsys_Subsystem_Sum_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="2" name="testsys_Constant">
+    <output line="line3" port="testsys_Constant_1">
+      <connect block="testsys_Product" port="testsys_Product_2"/>
+    </output>
+    <var line="line3" mode="output" name="line3" port="testsys_Constant_1" type="real_T"/>
+    <param name="Constant_Value_o" storage="testsys_P" type="real_T"/>
+    <code file="models/test1/testsys_ert_rtw/testsys.c" line="42" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  line3 = testsys_P.Constant_Value_o;
+
+</code>
+    <code file="models/test1/testsys_ert_rtw/testsys.c" line="62" type="init">  line3 = 0.0;
+</code>
+    <code file="models/test1/testsys_ert_rtw/testsys_data.c" line="25" type="param">  2.0                                  /* Expression: 2
+                                        * Referenced by: '&lt;Root&gt;/Constant'
+                                        */
+,</code>
+    <forward block="testsys_Product" type="data">
+      <var line="line3" mode="input" name="line3" port="testsys_Product_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Product" id="3" name="testsys_Product">
+    <input line="line2" port="testsys_Product_1">
+      <connect block="testsys_Subsystem" port="testsys_Subsystem_Out1"/>
+    </input>
+    <input line="line3" port="testsys_Product_2">
+      <connect block="testsys_Constant" port="testsys_Constant_1"/>
+    </input>
+    <output line="line4" port="testsys_Product_1">
+      <connect block="testsys_x_out" port="testsys_x_out_1"/>
+    </output>
+    <var line="line2" mode="input" name="line7" port="testsys_Product_1" type="real_T"/>
+    <var line="line3" mode="input" name="line3" port="testsys_Product_2" type="real_T"/>
+    <var line="line4" mode="extout" name="line4" port="testsys_Product_1" type="real_T"/>
+    <code file="models/test1/testsys_ert_rtw/testsys.c" line="45" type="task">  /* Product: '&lt;Root&gt;/Product' */
+  line4 = line7 * line3;
+</code>
+    <code file="models/test1/testsys_ert_rtw/testsys.c" line="63" type="init">  line4 = 0.0;
+
+</code>
+    <forward block="testsys_x_out" type="port">
+      <var line="line4" mode="input" name="line4" port="testsys_x_out_1" type="real_T"/>
+    </forward>
+    <backward block="testsys_Constant" type="data">
+      <var line="line3" mode="output" name="line3" port="testsys_Constant_1" type="real_T"/>
+    </backward>
+    <backward block="testsys_Subsystem_Sum" type="data">
+      <var line="line7" mode="output" name="line7" port="testsys_Subsystem_Sum_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="SubSystem" id="4" name="testsys_Subsystem">
+    <input line="line1" port="testsys_Subsystem_x1">
+      <connect block="testsys_x" port="testsys_x_1"/>
+    </input>
+    <output line="line2" port="testsys_Subsystem_Out1">
+      <connect block="testsys_Product" port="testsys_Product_1"/>
+    </output>
+    <sm:blocks>
+      <block blocktype="Inport" id="5" name="testsys_Subsystem_x1">
+        <output line="line5" port="testsys_Subsystem_x1_1">
+          <connect block="testsys_Subsystem_Sum" port="testsys_Subsystem_Sum_1"/>
+        </output>
+      </block>
+      <block blocktype="Constant" id="6" name="testsys_Subsystem_Constant">
+        <output line="line6" port="testsys_Subsystem_Constant_1">
+          <connect block="testsys_Subsystem_Sum" port="testsys_Subsystem_Sum_2"/>
+        </output>
+        <var line="line6" mode="output" name="line6" port="testsys_Subsystem_Constant_1" type="real_T"/>
+        <param name="Constant_Value" storage="testsys_P" type="real_T"/>
+        <code file="models/test1/testsys_ert_rtw/testsys.c" line="34" type="task">  /* Constant: '&lt;S1&gt;/Constant' */
+  line6 = testsys_P.Constant_Value;
+
+</code>
+        <code file="models/test1/testsys_ert_rtw/testsys.c" line="60" type="init">  line6 = 0.0;
+</code>
+        <code file="models/test1/testsys_ert_rtw/testsys_data.c" line="22" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;S1&gt;/Constant'
+                                        */
+</code>
+        <forward block="testsys_Subsystem_Sum" type="data">
+          <var line="line6" mode="input" name="line6" port="testsys_Subsystem_Sum_2" type="real_T"/>
+        </forward>
+      </block>
+      <block blocktype="Sum" id="7" name="testsys_Subsystem_Sum">
+        <input line="line5" port="testsys_Subsystem_Sum_1">
+          <connect block="testsys_Subsystem_x1" port="testsys_Subsystem_x1_1"/>
+        </input>
+        <input line="line6" port="testsys_Subsystem_Sum_2">
+          <connect block="testsys_Subsystem_Constant" port="testsys_Subsystem_Constant_1"/>
+        </input>
+        <output line="line7" port="testsys_Subsystem_Sum_1">
+          <connect block="testsys_Subsystem_Out1" port="testsys_Subsystem_Out1_1"/>
+        </output>
+        <var line="line5" mode="input" name="line1" port="testsys_Subsystem_Sum_1" type="real_T"/>
+        <var line="line6" mode="input" name="line6" port="testsys_Subsystem_Sum_2" type="real_T"/>
+        <var line="line7" mode="output" name="line7" port="testsys_Subsystem_Sum_1" type="real_T"/>
+        <code file="models/test1/testsys_ert_rtw/testsys.c" line="37" type="task">  /* Sum: '&lt;S1&gt;/Sum' incorporates:
+   *  Inport: '&lt;Root&gt;/x'
+   */
+  line7 = line1 + line6;
+
+</code>
+        <code file="models/test1/testsys_ert_rtw/testsys.c" line="61" type="init">  line7 = 0.0;
+</code>
+        <forward block="testsys_Product" type="data">
+          <var line="line2" mode="input" name="line7" port="testsys_Product_1" type="real_T"/>
+        </forward>
+        <backward block="testsys_Subsystem_Constant" type="data">
+          <var line="line6" mode="output" name="line6" port="testsys_Subsystem_Constant_1" type="real_T"/>
+        </backward>
+        <backward block="testsys_x" type="port">
+          <var line="line1" mode="extin" name="line1" port="testsys_x_1" type="real_T"/>
+        </backward>
+      </block>
+      <block blocktype="Outport" id="8" name="testsys_Subsystem_Out1">
+        <input line="line7" port="testsys_Subsystem_Out1_1">
+          <connect block="testsys_Subsystem_Sum" port="testsys_Subsystem_Sum_1"/>
+        </input>
+      </block>
+    </sm:blocks>
+  </block>
+  <block blocktype="Outport" id="9" name="testsys_x_out">
+    <input line="line4" port="testsys_x_out_1">
+      <connect block="testsys_Product" port="testsys_Product_1"/>
+    </input>
+    <var line="line4" mode="input" name="line4" port="testsys_x_out_1" type="real_T"/>
+    <backward block="testsys_Product" type="port">
+      <var line="line4" mode="extout" name="line4" port="testsys_Product_1" type="real_T"/>
+    </backward>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct RT_MODEL_testsys {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="testsys_M" type="extern struct RT_MODEL_testsys * const"/>
+  <object kind="rtm-object" name="testsys_M_" type="RT_MODEL_testsys"/>
+  <object kind="rtm-pointer" name="testsys_M" type="RT_MODEL_testsys * const" value="&amp;testsys_M_"/>
+  <includes file="&lt;stddef.h>" from="models/test1/testsys_ert_rtw/testsys.h" index="0"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="models/test1/testsys_ert_rtw/testsys.h" index="1"/>
+  <includes file="&quot;testsys_types.h&quot;" from="models/test1/testsys_ert_rtw/testsys.h" index="2"/>
+  <includes file="&quot;testsys_private.h&quot;" from="models/test1/testsys_ert_rtw/testsys.c" index="3"/>
+</sm:blocks>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+  <file name="models/testmux/testmux3_ert_rtw/testmux3.h" size="3486" timestamp="2013-11-29T16:17:54+0900" type="c-header"/>
+  <file name="models/testmux/xx.xml" size="3565" timestamp="2013-12-02T14:06:52+0900" type="xml"/>
+  <file name="models/testmux/testmux3_ert_rtw/testmux3.c" size="2309" timestamp="2013-11-29T16:17:54+0900" type="c-source"/>
+  <file name="models/testmux/testmux3_ert_rtw/testmux3_data.c" size="1204" timestamp="2013-11-29T16:17:54+0900" type="c-data"/>
+  <block blocktype="Inport" id="1" name="testmux3_x">
+    <output line="line1" port="testmux3_x_1">
+      <connect block="testmux3_Demux" port="testmux3_Demux_1"/>
+    </output>
+    <var line="line1" mode="extin" name="line1" port="testmux3_x_1" size="2" start="0" type="real_T"/>
+    <var line="line1" mode="extin" name="line1" port="testmux3_x_1" size="2" start="1" type="real_T"/>
+    <forward block="testmux3_Product" type="port">
+      <var line="line2" mode="input" name="line1" port="testmux3_Product_2" size="2" start="0" type="real_T"/>
+    </forward>
+    <forward block="testmux3_Sum" type="port">
+      <var line="line3" mode="input" name="line1" port="testmux3_Sum_1" size="2" start="1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="2" name="testmux3_Constant">
+    <output line="line5" port="testmux3_Constant_1">
+      <connect block="testmux3_Sum" port="testmux3_Sum_2"/>
+    </output>
+    <var line="line5" mode="output" name="line5" port="testmux3_Constant_1" type="real_T"/>
+    <param name="Constant_Value" storage="testmux3_P" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="44" type="task">  /* Constant: '&lt;Root&gt;/Constant' */
+  line5 = testmux3_P.Constant_Value;
+
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="73" type="init">  line5 = 0.0;
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3_data.c" line="25" type="param">  1.0,                                 /* Expression: 1
+                                        * Referenced by: '&lt;Root&gt;/Constant'
+                                        */
+</code>
+    <forward block="testmux3_Sum" type="data">
+      <var line="line5" mode="input" name="line5" port="testmux3_Sum_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="3" name="testmux3_Constant1">
+    <output line="line4" port="testmux3_Constant1_1">
+      <connect block="testmux3_Product" port="testmux3_Product_1"/>
+    </output>
+    <var line="line4" mode="output" name="line4" port="testmux3_Constant1_1" type="real_T"/>
+    <param name="Constant1_Value" storage="testmux3_P" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="36" type="task">  /* Constant: '&lt;Root&gt;/Constant1' */
+  line4 = testmux3_P.Constant1_Value;
+
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="71" type="init">  line4 = 0.0;
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3_data.c" line="22" type="param">  2.0,                                 /* Expression: 2
+                                        * Referenced by: '&lt;Root&gt;/Constant1'
+                                        */
+</code>
+    <forward block="testmux3_Product" type="data">
+      <var line="line4" mode="input" name="line4" port="testmux3_Product_1" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Constant" id="4" name="testmux3_Constant2">
+    <output line="line9" port="testmux3_Constant2_1">
+      <connect block="testmux3_Sum1" port="testmux3_Sum1_2"/>
+    </output>
+    <var line="line9" mode="output" name="line9" port="testmux3_Constant2_1" type="real_T"/>
+    <param name="Constant2_Value" storage="testmux3_P" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="52" type="task">  /* Constant: '&lt;Root&gt;/Constant2' */
+  line9 = testmux3_P.Constant2_Value;
+
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="75" type="init">  line9 = 0.0;
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3_data.c" line="28" type="param">  3.0                                  /* Expression: 3
+                                        * Referenced by: '&lt;Root&gt;/Constant2'
+                                        */
+,</code>
+    <forward block="testmux3_Sum1" type="data">
+      <var line="line9" mode="input" name="line9" port="testmux3_Sum1_2" type="real_T"/>
+    </forward>
+  </block>
+  <block blocktype="Demux" id="5" name="testmux3_Demux">
+    <input line="line1" port="testmux3_Demux_1">
+      <connect block="testmux3_x" port="testmux3_x_1"/>
+    </input>
+    <output line="line2" port="testmux3_Demux_1">
+      <connect block="testmux3_Product" port="testmux3_Product_2"/>
+    </output>
+    <output line="line3" port="testmux3_Demux_2">
+      <connect block="testmux3_Sum" port="testmux3_Sum_1"/>
+    </output>
+  </block>
+  <block blocktype="Mux" id="6" name="testmux3_Mux">
+    <input line="line6" port="testmux3_Mux_1">
+      <connect block="testmux3_Product" port="testmux3_Product_1"/>
+    </input>
+    <input line="line7" port="testmux3_Mux_2">
+      <connect block="testmux3_Sum" port="testmux3_Sum_1"/>
+    </input>
+    <output line="line8" port="testmux3_Mux_1">
+      <connect block="testmux3_Sum1" port="testmux3_Sum1_1"/>
+    </output>
+  </block>
+  <block blocktype="Product" id="7" name="testmux3_Product">
+    <input line="line4" port="testmux3_Product_1">
+      <connect block="testmux3_Constant1" port="testmux3_Constant1_1"/>
+    </input>
+    <input line="line2" port="testmux3_Product_2">
+      <connect block="testmux3_Demux" port="testmux3_Demux_1"/>
+    </input>
+    <output line="line6" port="testmux3_Product_1">
+      <connect block="testmux3_Mux" port="testmux3_Mux_1"/>
+    </output>
+    <var line="line4" mode="input" name="line4" port="testmux3_Product_1" type="real_T"/>
+    <var line="line2" mode="input" name="line1" port="testmux3_Product_2" size="2" start="0" type="real_T"/>
+    <var line="line6" mode="output" name="line6" port="testmux3_Product_1" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="39" type="task">  /* Product: '&lt;Root&gt;/Product' incorporates:
+   *  Inport: '&lt;Root&gt;/x'
+   */
+  line6 = line4 * line1[0];
+
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="72" type="init">  line6 = 0.0;
+</code>
+    <forward block="testmux3_Sum1" type="data">
+      <var line="line8" mode="input" name="line6" port="testmux3_Sum1_1" type="real_T"/>
+    </forward>
+    <backward block="testmux3_Constant1" type="data">
+      <var line="line4" mode="output" name="line4" port="testmux3_Constant1_1" type="real_T"/>
+    </backward>
+    <backward block="testmux3_x" type="port">
+      <var line="line1" mode="extin" name="line1" port="testmux3_x_1" size="2" start="0" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="Sum" id="8" name="testmux3_Sum">
+    <input line="line3" port="testmux3_Sum_1">
+      <connect block="testmux3_Demux" port="testmux3_Demux_2"/>
+    </input>
+    <input line="line5" port="testmux3_Sum_2">
+      <connect block="testmux3_Constant" port="testmux3_Constant_1"/>
+    </input>
+    <output line="line7" port="testmux3_Sum_1">
+      <connect block="testmux3_Mux" port="testmux3_Mux_2"/>
+    </output>
+    <var line="line3" mode="input" name="line1" port="testmux3_Sum_1" size="2" start="1" type="real_T"/>
+    <var line="line5" mode="input" name="line5" port="testmux3_Sum_2" type="real_T"/>
+    <var line="line7" mode="output" name="line7" port="testmux3_Sum_1" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="47" type="task">  /* Sum: '&lt;Root&gt;/Sum' incorporates:
+   *  Inport: '&lt;Root&gt;/x'
+   */
+  line7 = line1[1] + line5;
+
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="74" type="init">  line7 = 0.0;
+</code>
+    <forward block="testmux3_Sum1" type="data">
+      <var line="line8" mode="input" name="line7" port="testmux3_Sum1_1" type="real_T"/>
+    </forward>
+    <backward block="testmux3_Constant" type="data">
+      <var line="line5" mode="output" name="line5" port="testmux3_Constant_1" type="real_T"/>
+    </backward>
+    <backward block="testmux3_x" type="port">
+      <var line="line1" mode="extin" name="line1" port="testmux3_x_1" size="2" start="1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="Sum" id="9" name="testmux3_Sum1">
+    <input line="line8" port="testmux3_Sum1_1">
+      <connect block="testmux3_Mux" port="testmux3_Mux_1"/>
+    </input>
+    <input line="line9" port="testmux3_Sum1_2">
+      <connect block="testmux3_Constant2" port="testmux3_Constant2_1"/>
+    </input>
+    <output line="line10" port="testmux3_Sum1_1">
+      <connect block="testmux3_x_out" port="testmux3_x_out_1"/>
+    </output>
+    <var line="line8" mode="input" name="line6" port="testmux3_Sum1_1" type="real_T"/>
+    <var line="line8" mode="input" name="line7" port="testmux3_Sum1_1" type="real_T"/>
+    <var line="line9" mode="input" name="line9" port="testmux3_Sum1_2" type="real_T"/>
+    <var line="line10" mode="extout" name="line10" port="testmux3_Sum1_1" size="2" type="real_T"/>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="55" type="task">  /* Sum: '&lt;Root&gt;/Sum1' */
+  line10[0] = line6 + line9;
+  line10[1] = line7 + line9;
+</code>
+    <code file="models/testmux/testmux3_ert_rtw/testmux3.c" line="76" type="init">  line10[0] = 0.0;
+  line10[1] = 0.0;
+
+</code>
+    <forward block="testmux3_x_out" type="port">
+      <var line="line10" mode="input" name="line10" port="testmux3_x_out_1" size="2" type="real_T"/>
+    </forward>
+    <backward block="testmux3_Constant2" type="data">
+      <var line="line9" mode="output" name="line9" port="testmux3_Constant2_1" type="real_T"/>
+    </backward>
+    <backward block="testmux3_Product" type="data">
+      <var line="line6" mode="output" name="line6" port="testmux3_Product_1" type="real_T"/>
+    </backward>
+    <backward block="testmux3_Sum" type="data">
+      <var line="line7" mode="output" name="line7" port="testmux3_Sum_1" type="real_T"/>
+    </backward>
+  </block>
+  <block blocktype="Outport" id="10" name="testmux3_x_out">
+    <input line="line10" port="testmux3_x_out_1">
+      <connect block="testmux3_Sum1" port="testmux3_Sum1_1"/>
+    </input>
+    <var line="line10" mode="input" name="line10" port="testmux3_x_out_1" size="2" type="real_T"/>
+    <backward block="testmux3_Sum1" type="port">
+      <var line="line10" mode="extout" name="line10" port="testmux3_Sum1_1" size="2" type="real_T"/>
+    </backward>
+  </block>
+  <code type="rt-macro">/* Macros for accessing real-time model data structure */
+#ifndef rtmGetErrorStatus
+# define rtmGetErrorStatus(rtm)        ((rtm)-&gt;errorStatus)
+#endif
+
+#ifndef rtmSetErrorStatus
+# define rtmSetErrorStatus(rtm, val)   ((rtm)-&gt;errorStatus = (val))
+#endif
+
+</code>
+  <code type="rt-type">/* Real-time Model Data Structure */
+struct RT_MODEL_testmux3 {
+  const char_T * volatile errorStatus;
+};
+</code>
+  <object kind="rtm-extern" name="testmux3_M" type="extern struct RT_MODEL_testmux3 * const"/>
+  <object kind="rtm-object" name="testmux3_M_" type="RT_MODEL_testmux3"/>
+  <object kind="rtm-pointer" name="testmux3_M" type="RT_MODEL_testmux3 * const" value="&amp;testmux3_M_"/>
+  <includes file="&lt;stddef.h>" from="models/testmux/testmux3_ert_rtw/testmux3.h" index="0"/>
+  <includes file="&lt;string.h>" from="models/testmux/testmux3_ert_rtw/testmux3.h" index="1"/>
+  <includes file="&quot;rtwtypes.h&quot;" from="models/testmux/testmux3_ert_rtw/testmux3.h" index="2"/>
+  <includes file="&quot;testmux3_types.h&quot;" from="models/testmux/testmux3_ert_rtw/testmux3.h" index="3"/>
+  <includes file="&quot;testmux3_private.h&quot;" from="models/testmux/testmux3_ert_rtw/testmux3.c" index="4"/>
+</sm:blocks>

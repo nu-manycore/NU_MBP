@@ -1,0 +1,18 @@
+digraph testout {
+	subgraph testsys_Subsystem {
+		graph [label=testsys_Subsystem];
+		t6		 [label="t6\ntestsys_Subsystem_Constant"];
+		t7		 [label="t7\ntestsys_Subsystem_Sum"];
+	}
+	t1	 [label="t1\ntestsys_x",
+		shape=box];
+	t1 -> t7	 [label=line1];
+	t2	 [label="t2\ntestsys_Constant"];
+	t3	 [label="t3\ntestsys_Product"];
+	t2 -> t3	 [label=line3];
+	t9	 [label="t9\ntestsys_x_out",
+		shape=box];
+	t3 -> t9	 [label=line4];
+	t6 -> t7	 [label=line6];
+	t7 -> t3	 [label=line7];
+}

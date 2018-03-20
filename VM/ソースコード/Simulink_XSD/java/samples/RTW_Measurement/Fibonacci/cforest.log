@@ -1,0 +1,961 @@
+CForest MP v140226 (rev:e775365)
+Copyright (c) Renesas Electronics Corporation. 2011,2012,2013
+---- Allocated Memory Map ----
+  <START>      <END>      <RW> <READ,WRITE> <pe_to_pe R,W> <cl_to_cl R,W> <CL> <PE> <OUTSTAND> <REPEAT>
+  0x81000000 - 0x811fffff RWX  1    ,1      5   ,5         7   ,7         0    1    4          1  
+  0x83000000 - 0x831fffff RWX  1    ,1      5   ,5         7   ,7         0    2    4          1  
+  0x85000000 - 0x851fffff RWX  1    ,1      5   ,5         7   ,7         0    3    4          1  
+  0x87000000 - 0x871fffff RWX  1    ,1      5   ,5         7   ,7         0    4    4          1  
+  0x89000000 - 0x891fffff RWX  1    ,1      5   ,5         7   ,7         1    1    4          1  
+  0x8b000000 - 0x8b1fffff RWX  1    ,1      5   ,5         7   ,7         1    2    4          1  
+  0x8d000000 - 0x8d1fffff RWX  1    ,1      5   ,5         7   ,7         1    3    4          1  
+  0x8f000000 - 0x8f1fffff RWX  1    ,1      5   ,5         7   ,7         1    4    4          1  
+  0x91000000 - 0x911fffff RWX  1    ,1      5   ,5         7   ,7         2    1    4          1  
+  0x93000000 - 0x931fffff RWX  1    ,1      5   ,5         7   ,7         2    2    4          1  
+  0x95000000 - 0x951fffff RWX  1    ,1      5   ,5         7   ,7         2    3    4          1  
+  0x97000000 - 0x971fffff RWX  1    ,1      5   ,5         7   ,7         2    4    4          1  
+  0x99000000 - 0x991fffff RWX  1    ,1      5   ,5         7   ,7         3    1    4          1  
+  0x9b000000 - 0x9b1fffff RWX  1    ,1      5   ,5         7   ,7         3    2    4          1  
+  0x9d000000 - 0x9d1fffff RWX  1    ,1      5   ,5         7   ,7         3    3    4          1  
+  0x9f000000 - 0x9f1fffff RWX  1    ,1      5   ,5         7   ,7         3    4    4          1  
+  0x80000000 - 0x80ffffff RX   5    ,5      5   ,5         7   ,7         0    15   4          7  
+  0x88000000 - 0x88ffffff RX   5    ,5      5   ,5         7   ,7         1    15   4          7  
+  0x90000000 - 0x90ffffff RX   5    ,5      5   ,5         7   ,7         2    15   4          7  
+  0x98000000 - 0x98ffffff RX   5    ,5      5   ,5         7   ,7         3    15   4          7  
+  0x81200000 - 0x817fffff RWX  3    ,3      3   ,3         5   ,5         0    15   4          2  
+  0x89200000 - 0x897fffff RWX  3    ,3      3   ,3         5   ,5         1    15   4          2  
+  0x91200000 - 0x917fffff RWX  3    ,3      3   ,3         5   ,5         2    15   4          2  
+  0x99200000 - 0x997fffff RWX  3    ,3      3   ,3         5   ,5         3    15   4          2  
+  0x18000000 - 0x187fffff RWX  13   ,13     13  ,13        13  ,13        15   0    4          1  
+  0x1a000000 - 0x1bffffff RX   13   ,13     13  ,13        13  ,13        15   0    4          1  
+  0xc0000000 - 0xc7ffffff RWX  13   ,13     13  ,13        13  ,13        15   0    4          1  
+  0xc8000000 - 0xcfffffff RWX  13   ,13     13  ,13        13  ,13        15   0    4          1  
+---- AdditionalLatencySetting for BusMaster ----
+  <CL> <PE>   <pe_to_pe>  <cl_to_cl>
+  0    1      3           2  
+  0    2      3           2  
+  0    3      3           2  
+  0    4      3           2  
+  1    1      3           2  
+  1    2      3           2  
+  1    3      3           2  
+  1    4      3           2  
+  2    1      3           2  
+  2    2      3           2  
+  2    3      3           2  
+  2    4      3           2  
+  3    1      3           2  
+  3    2      3           2  
+  3    3      3           2  
+  3    4      3           2  
+---- Reference Memory Area Map ----
+  <CL>  <PE> : <START>     <END>    =>  <START>     <END>  
+     0    1  : 00000000 - 00ffffff  =>  80000000 - 80ffffff
+     0    1  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     0    1  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     0    1  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     0    1  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     0    1  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     0    1  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     0    1  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     0    1  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     0    1  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     0    1  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     0    1  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     0    1  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     0    1  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     0    1  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     0    1  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     0    1  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     0    1  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     0    1  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     0    1  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     0    1  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     0    1  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     0    1  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     0    1  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     0    1  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     0    1  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     0    1  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     0    1  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     0    1  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     0    1  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     0    1  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     0    1  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     0    1  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     0    1  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     0    1  : fe400000 - fe5fffff  =>  81000000 - 811fffff
+     0    1  : fe600000 - fe7fffff  =>  83000000 - 831fffff
+     0    1  : fe800000 - fe9fffff  =>  85000000 - 851fffff
+     0    1  : fea00000 - febfffff  =>  87000000 - 871fffff
+     0    1  : fec00000 - fedfffff  =>  81000000 - 811fffff
+     0    1  : fee00000 - ff3fffff  =>  81200000 - 817fffff
+     0    1  : ff800000 - ffbeffff  =>  81800000 - 81beffff
+     0    1  : fffe0000 - fffeebff  =>  81ff0000 - 81ffebff
+     0    1  : fffeec00 - fffeec7f  =>  818e0000 - 818e007f
+     0    1  : fffeec80 - fffeffff  =>  81ffec80 - 81ffffff
+     0    2  : 00000000 - 00ffffff  =>  80000000 - 80ffffff
+     0    2  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     0    2  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     0    2  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     0    2  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     0    2  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     0    2  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     0    2  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     0    2  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     0    2  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     0    2  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     0    2  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     0    2  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     0    2  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     0    2  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     0    2  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     0    2  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     0    2  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     0    2  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     0    2  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     0    2  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     0    2  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     0    2  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     0    2  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     0    2  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     0    2  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     0    2  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     0    2  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     0    2  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     0    2  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     0    2  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     0    2  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     0    2  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     0    2  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     0    2  : fe400000 - fe5fffff  =>  81000000 - 811fffff
+     0    2  : fe600000 - fe7fffff  =>  83000000 - 831fffff
+     0    2  : fe800000 - fe9fffff  =>  85000000 - 851fffff
+     0    2  : fea00000 - febfffff  =>  87000000 - 871fffff
+     0    2  : fec00000 - fedfffff  =>  83000000 - 831fffff
+     0    2  : fee00000 - ff3fffff  =>  81200000 - 817fffff
+     0    2  : ff800000 - ffbeffff  =>  81800000 - 81beffff
+     0    2  : fffe0000 - fffeebff  =>  83ff0000 - 83ffebff
+     0    2  : fffeec00 - fffeec7f  =>  818e0000 - 818e007f
+     0    2  : fffeec80 - fffeffff  =>  83ffec80 - 83ffffff
+     0    3  : 00000000 - 00ffffff  =>  80000000 - 80ffffff
+     0    3  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     0    3  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     0    3  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     0    3  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     0    3  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     0    3  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     0    3  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     0    3  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     0    3  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     0    3  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     0    3  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     0    3  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     0    3  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     0    3  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     0    3  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     0    3  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     0    3  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     0    3  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     0    3  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     0    3  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     0    3  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     0    3  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     0    3  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     0    3  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     0    3  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     0    3  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     0    3  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     0    3  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     0    3  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     0    3  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     0    3  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     0    3  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     0    3  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     0    3  : fe400000 - fe5fffff  =>  81000000 - 811fffff
+     0    3  : fe600000 - fe7fffff  =>  83000000 - 831fffff
+     0    3  : fe800000 - fe9fffff  =>  85000000 - 851fffff
+     0    3  : fea00000 - febfffff  =>  87000000 - 871fffff
+     0    3  : fec00000 - fedfffff  =>  85000000 - 851fffff
+     0    3  : fee00000 - ff3fffff  =>  81200000 - 817fffff
+     0    3  : ff800000 - ffbeffff  =>  81800000 - 81beffff
+     0    3  : fffe0000 - fffeebff  =>  85ff0000 - 85ffebff
+     0    3  : fffeec00 - fffeec7f  =>  818e0000 - 818e007f
+     0    3  : fffeec80 - fffeffff  =>  85ffec80 - 85ffffff
+     0    4  : 00000000 - 00ffffff  =>  80000000 - 80ffffff
+     0    4  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     0    4  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     0    4  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     0    4  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     0    4  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     0    4  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     0    4  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     0    4  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     0    4  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     0    4  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     0    4  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     0    4  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     0    4  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     0    4  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     0    4  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     0    4  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     0    4  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     0    4  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     0    4  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     0    4  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     0    4  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     0    4  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     0    4  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     0    4  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     0    4  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     0    4  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     0    4  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     0    4  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     0    4  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     0    4  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     0    4  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     0    4  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     0    4  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     0    4  : fe400000 - fe5fffff  =>  81000000 - 811fffff
+     0    4  : fe600000 - fe7fffff  =>  83000000 - 831fffff
+     0    4  : fe800000 - fe9fffff  =>  85000000 - 851fffff
+     0    4  : fea00000 - febfffff  =>  87000000 - 871fffff
+     0    4  : fec00000 - fedfffff  =>  87000000 - 871fffff
+     0    4  : fee00000 - ff3fffff  =>  81200000 - 817fffff
+     0    4  : ff800000 - ffbeffff  =>  81800000 - 81beffff
+     0    4  : fffe0000 - fffeebff  =>  87ff0000 - 87ffebff
+     0    4  : fffeec00 - fffeec7f  =>  818e0000 - 818e007f
+     0    4  : fffeec80 - fffeffff  =>  87ffec80 - 87ffffff
+     1    1  : 00000000 - 00ffffff  =>  88000000 - 88ffffff
+     1    1  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     1    1  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     1    1  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     1    1  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     1    1  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     1    1  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     1    1  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     1    1  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     1    1  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     1    1  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     1    1  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     1    1  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     1    1  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     1    1  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     1    1  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     1    1  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     1    1  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     1    1  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     1    1  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     1    1  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     1    1  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     1    1  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     1    1  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     1    1  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     1    1  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     1    1  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     1    1  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     1    1  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     1    1  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     1    1  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     1    1  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     1    1  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     1    1  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     1    1  : fe400000 - fe5fffff  =>  89000000 - 891fffff
+     1    1  : fe600000 - fe7fffff  =>  8b000000 - 8b1fffff
+     1    1  : fe800000 - fe9fffff  =>  8d000000 - 8d1fffff
+     1    1  : fea00000 - febfffff  =>  8f000000 - 8f1fffff
+     1    1  : fec00000 - fedfffff  =>  89000000 - 891fffff
+     1    1  : fee00000 - ff3fffff  =>  89200000 - 897fffff
+     1    1  : ff800000 - ffbeffff  =>  89800000 - 89beffff
+     1    1  : fffe0000 - fffeebff  =>  89ff0000 - 89ffebff
+     1    1  : fffeec00 - fffeec7f  =>  898e0000 - 898e007f
+     1    1  : fffeec80 - fffeffff  =>  89ffec80 - 89ffffff
+     1    2  : 00000000 - 00ffffff  =>  88000000 - 88ffffff
+     1    2  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     1    2  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     1    2  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     1    2  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     1    2  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     1    2  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     1    2  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     1    2  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     1    2  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     1    2  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     1    2  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     1    2  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     1    2  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     1    2  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     1    2  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     1    2  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     1    2  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     1    2  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     1    2  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     1    2  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     1    2  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     1    2  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     1    2  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     1    2  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     1    2  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     1    2  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     1    2  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     1    2  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     1    2  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     1    2  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     1    2  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     1    2  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     1    2  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     1    2  : fe400000 - fe5fffff  =>  89000000 - 891fffff
+     1    2  : fe600000 - fe7fffff  =>  8b000000 - 8b1fffff
+     1    2  : fe800000 - fe9fffff  =>  8d000000 - 8d1fffff
+     1    2  : fea00000 - febfffff  =>  8f000000 - 8f1fffff
+     1    2  : fec00000 - fedfffff  =>  8b000000 - 8b1fffff
+     1    2  : fee00000 - ff3fffff  =>  89200000 - 897fffff
+     1    2  : ff800000 - ffbeffff  =>  89800000 - 89beffff
+     1    2  : fffe0000 - fffeebff  =>  8bff0000 - 8bffebff
+     1    2  : fffeec00 - fffeec7f  =>  898e0000 - 898e007f
+     1    2  : fffeec80 - fffeffff  =>  8bffec80 - 8bffffff
+     1    3  : 00000000 - 00ffffff  =>  88000000 - 88ffffff
+     1    3  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     1    3  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     1    3  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     1    3  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     1    3  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     1    3  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     1    3  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     1    3  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     1    3  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     1    3  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     1    3  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     1    3  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     1    3  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     1    3  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     1    3  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     1    3  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     1    3  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     1    3  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     1    3  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     1    3  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     1    3  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     1    3  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     1    3  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     1    3  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     1    3  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     1    3  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     1    3  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     1    3  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     1    3  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     1    3  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     1    3  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     1    3  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     1    3  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     1    3  : fe400000 - fe5fffff  =>  89000000 - 891fffff
+     1    3  : fe600000 - fe7fffff  =>  8b000000 - 8b1fffff
+     1    3  : fe800000 - fe9fffff  =>  8d000000 - 8d1fffff
+     1    3  : fea00000 - febfffff  =>  8f000000 - 8f1fffff
+     1    3  : fec00000 - fedfffff  =>  8d000000 - 8d1fffff
+     1    3  : fee00000 - ff3fffff  =>  89200000 - 897fffff
+     1    3  : ff800000 - ffbeffff  =>  89800000 - 89beffff
+     1    3  : fffe0000 - fffeebff  =>  8dff0000 - 8dffebff
+     1    3  : fffeec00 - fffeec7f  =>  898e0000 - 898e007f
+     1    3  : fffeec80 - fffeffff  =>  8dffec80 - 8dffffff
+     1    4  : 00000000 - 00ffffff  =>  88000000 - 88ffffff
+     1    4  : 48000000 - 48003fff  =>  e0000000 - e0003fff
+     1    4  : 70000000 - 77ffffff  =>  c0000000 - c7ffffff
+     1    4  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     1    4  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     1    4  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     1    4  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     1    4  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     1    4  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     1    4  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     1    4  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     1    4  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     1    4  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     1    4  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     1    4  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     1    4  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     1    4  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     1    4  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     1    4  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     1    4  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     1    4  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     1    4  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     1    4  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     1    4  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     1    4  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     1    4  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     1    4  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     1    4  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     1    4  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     1    4  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     1    4  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     1    4  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     1    4  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     1    4  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     1    4  : fe400000 - fe5fffff  =>  89000000 - 891fffff
+     1    4  : fe600000 - fe7fffff  =>  8b000000 - 8b1fffff
+     1    4  : fe800000 - fe9fffff  =>  8d000000 - 8d1fffff
+     1    4  : fea00000 - febfffff  =>  8f000000 - 8f1fffff
+     1    4  : fec00000 - fedfffff  =>  8f000000 - 8f1fffff
+     1    4  : fee00000 - ff3fffff  =>  89200000 - 897fffff
+     1    4  : ff800000 - ffbeffff  =>  89800000 - 89beffff
+     1    4  : fffe0000 - fffeebff  =>  8fff0000 - 8fffebff
+     1    4  : fffeec00 - fffeec7f  =>  898e0000 - 898e007f
+     1    4  : fffeec80 - fffeffff  =>  8fffec80 - 8fffffff
+     2    1  : 00000000 - 00ffffff  =>  90000000 - 90ffffff
+     2    1  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     2    1  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     2    1  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     2    1  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     2    1  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     2    1  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     2    1  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     2    1  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     2    1  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     2    1  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     2    1  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     2    1  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     2    1  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     2    1  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     2    1  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     2    1  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     2    1  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     2    1  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     2    1  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     2    1  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     2    1  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     2    1  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     2    1  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     2    1  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     2    1  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     2    1  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     2    1  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     2    1  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     2    1  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     2    1  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     2    1  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     2    1  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     2    1  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     2    1  : fe400000 - fe5fffff  =>  91000000 - 911fffff
+     2    1  : fe600000 - fe7fffff  =>  93000000 - 931fffff
+     2    1  : fe800000 - fe9fffff  =>  95000000 - 951fffff
+     2    1  : fea00000 - febfffff  =>  97000000 - 971fffff
+     2    1  : fec00000 - fedfffff  =>  91000000 - 911fffff
+     2    1  : fee00000 - ff3fffff  =>  91200000 - 917fffff
+     2    1  : ff800000 - ffbeffff  =>  91800000 - 91beffff
+     2    1  : fffe0000 - fffeebff  =>  91ff0000 - 91ffebff
+     2    1  : fffeec00 - fffeec7f  =>  918e0000 - 918e007f
+     2    1  : fffeec80 - fffeffff  =>  91ffec80 - 91ffffff
+     2    2  : 00000000 - 00ffffff  =>  90000000 - 90ffffff
+     2    2  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     2    2  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     2    2  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     2    2  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     2    2  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     2    2  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     2    2  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     2    2  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     2    2  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     2    2  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     2    2  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     2    2  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     2    2  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     2    2  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     2    2  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     2    2  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     2    2  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     2    2  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     2    2  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     2    2  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     2    2  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     2    2  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     2    2  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     2    2  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     2    2  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     2    2  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     2    2  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     2    2  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     2    2  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     2    2  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     2    2  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     2    2  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     2    2  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     2    2  : fe400000 - fe5fffff  =>  91000000 - 911fffff
+     2    2  : fe600000 - fe7fffff  =>  93000000 - 931fffff
+     2    2  : fe800000 - fe9fffff  =>  95000000 - 951fffff
+     2    2  : fea00000 - febfffff  =>  97000000 - 971fffff
+     2    2  : fec00000 - fedfffff  =>  93000000 - 931fffff
+     2    2  : fee00000 - ff3fffff  =>  91200000 - 917fffff
+     2    2  : ff800000 - ffbeffff  =>  91800000 - 91beffff
+     2    2  : fffe0000 - fffeebff  =>  93ff0000 - 93ffebff
+     2    2  : fffeec00 - fffeec7f  =>  918e0000 - 918e007f
+     2    2  : fffeec80 - fffeffff  =>  93ffec80 - 93ffffff
+     2    3  : 00000000 - 00ffffff  =>  90000000 - 90ffffff
+     2    3  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     2    3  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     2    3  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     2    3  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     2    3  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     2    3  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     2    3  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     2    3  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     2    3  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     2    3  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     2    3  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     2    3  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     2    3  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     2    3  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     2    3  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     2    3  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     2    3  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     2    3  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     2    3  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     2    3  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     2    3  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     2    3  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     2    3  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     2    3  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     2    3  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     2    3  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     2    3  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     2    3  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     2    3  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     2    3  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     2    3  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     2    3  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     2    3  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     2    3  : fe400000 - fe5fffff  =>  91000000 - 911fffff
+     2    3  : fe600000 - fe7fffff  =>  93000000 - 931fffff
+     2    3  : fe800000 - fe9fffff  =>  95000000 - 951fffff
+     2    3  : fea00000 - febfffff  =>  97000000 - 971fffff
+     2    3  : fec00000 - fedfffff  =>  95000000 - 951fffff
+     2    3  : fee00000 - ff3fffff  =>  91200000 - 917fffff
+     2    3  : ff800000 - ffbeffff  =>  91800000 - 91beffff
+     2    3  : fffe0000 - fffeebff  =>  95ff0000 - 95ffebff
+     2    3  : fffeec00 - fffeec7f  =>  918e0000 - 918e007f
+     2    3  : fffeec80 - fffeffff  =>  95ffec80 - 95ffffff
+     2    4  : 00000000 - 00ffffff  =>  90000000 - 90ffffff
+     2    4  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     2    4  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     2    4  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     2    4  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     2    4  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     2    4  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     2    4  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     2    4  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     2    4  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     2    4  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     2    4  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     2    4  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     2    4  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     2    4  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     2    4  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     2    4  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     2    4  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     2    4  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     2    4  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     2    4  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     2    4  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     2    4  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     2    4  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     2    4  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     2    4  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     2    4  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     2    4  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     2    4  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     2    4  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     2    4  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     2    4  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     2    4  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     2    4  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     2    4  : fe400000 - fe5fffff  =>  91000000 - 911fffff
+     2    4  : fe600000 - fe7fffff  =>  93000000 - 931fffff
+     2    4  : fe800000 - fe9fffff  =>  95000000 - 951fffff
+     2    4  : fea00000 - febfffff  =>  97000000 - 971fffff
+     2    4  : fec00000 - fedfffff  =>  97000000 - 971fffff
+     2    4  : fee00000 - ff3fffff  =>  91200000 - 917fffff
+     2    4  : ff800000 - ffbeffff  =>  91800000 - 91beffff
+     2    4  : fffe0000 - fffeebff  =>  97ff0000 - 97ffebff
+     2    4  : fffeec00 - fffeec7f  =>  918e0000 - 918e007f
+     2    4  : fffeec80 - fffeffff  =>  97ffec80 - 97ffffff
+     3    1  : 00000000 - 00ffffff  =>  98000000 - 98ffffff
+     3    1  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     3    1  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     3    1  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     3    1  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     3    1  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     3    1  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     3    1  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     3    1  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     3    1  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     3    1  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     3    1  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     3    1  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     3    1  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     3    1  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     3    1  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     3    1  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     3    1  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     3    1  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     3    1  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     3    1  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     3    1  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     3    1  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     3    1  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     3    1  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     3    1  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     3    1  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     3    1  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     3    1  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     3    1  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     3    1  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     3    1  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     3    1  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     3    1  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     3    1  : fe400000 - fe5fffff  =>  99000000 - 991fffff
+     3    1  : fe600000 - fe7fffff  =>  9b000000 - 9b1fffff
+     3    1  : fe800000 - fe9fffff  =>  9d000000 - 9d1fffff
+     3    1  : fea00000 - febfffff  =>  9f000000 - 9f1fffff
+     3    1  : fec00000 - fedfffff  =>  99000000 - 991fffff
+     3    1  : fee00000 - ff3fffff  =>  99200000 - 997fffff
+     3    1  : ff800000 - ffbeffff  =>  99800000 - 99beffff
+     3    1  : fffe0000 - fffeebff  =>  99ff0000 - 99ffebff
+     3    1  : fffeec00 - fffeec7f  =>  998e0000 - 998e007f
+     3    1  : fffeec80 - fffeffff  =>  99ffec80 - 99ffffff
+     3    2  : 00000000 - 00ffffff  =>  98000000 - 98ffffff
+     3    2  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     3    2  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     3    2  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     3    2  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     3    2  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     3    2  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     3    2  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     3    2  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     3    2  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     3    2  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     3    2  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     3    2  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     3    2  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     3    2  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     3    2  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     3    2  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     3    2  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     3    2  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     3    2  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     3    2  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     3    2  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     3    2  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     3    2  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     3    2  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     3    2  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     3    2  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     3    2  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     3    2  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     3    2  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     3    2  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     3    2  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     3    2  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     3    2  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     3    2  : fe400000 - fe5fffff  =>  99000000 - 991fffff
+     3    2  : fe600000 - fe7fffff  =>  9b000000 - 9b1fffff
+     3    2  : fe800000 - fe9fffff  =>  9d000000 - 9d1fffff
+     3    2  : fea00000 - febfffff  =>  9f000000 - 9f1fffff
+     3    2  : fec00000 - fedfffff  =>  9b000000 - 9b1fffff
+     3    2  : fee00000 - ff3fffff  =>  99200000 - 997fffff
+     3    2  : ff800000 - ffbeffff  =>  99800000 - 99beffff
+     3    2  : fffe0000 - fffeebff  =>  9bff0000 - 9bffebff
+     3    2  : fffeec00 - fffeec7f  =>  998e0000 - 998e007f
+     3    2  : fffeec80 - fffeffff  =>  9bffec80 - 9bffffff
+     3    3  : 00000000 - 00ffffff  =>  98000000 - 98ffffff
+     3    3  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     3    3  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     3    3  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     3    3  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     3    3  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     3    3  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     3    3  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     3    3  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     3    3  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     3    3  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     3    3  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     3    3  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     3    3  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     3    3  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     3    3  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     3    3  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     3    3  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     3    3  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     3    3  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     3    3  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     3    3  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     3    3  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     3    3  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     3    3  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     3    3  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     3    3  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     3    3  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     3    3  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     3    3  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     3    3  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     3    3  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     3    3  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     3    3  : 9fffe000 - 9fffffff  =>  9fff0000 - 9fff1fff
+     3    3  : fe400000 - fe5fffff  =>  99000000 - 991fffff
+     3    3  : fe600000 - fe7fffff  =>  9b000000 - 9b1fffff
+     3    3  : fe800000 - fe9fffff  =>  9d000000 - 9d1fffff
+     3    3  : fea00000 - febfffff  =>  9f000000 - 9f1fffff
+     3    3  : fec00000 - fedfffff  =>  9d000000 - 9d1fffff
+     3    3  : fee00000 - ff3fffff  =>  99200000 - 997fffff
+     3    3  : ff800000 - ffbeffff  =>  99800000 - 99beffff
+     3    3  : fffe0000 - fffeebff  =>  9dff0000 - 9dffebff
+     3    3  : fffeec00 - fffeec7f  =>  998e0000 - 998e007f
+     3    3  : fffeec80 - fffeffff  =>  9dffec80 - 9dffffff
+     3    4  : 00000000 - 00ffffff  =>  98000000 - 98ffffff
+     3    4  : 48000000 - 48003fff  =>  e4000000 - e4003fff
+     3    4  : 70000000 - 77ffffff  =>  c8000000 - cfffffff
+     3    4  : 818e0000 - 818effff  =>  818f0000 - 818fffff
+     3    4  : 81ffe000 - 81ffffff  =>  81ff0000 - 81ff1fff
+     3    4  : 82000000 - 82ffffff  =>  80000000 - 80ffffff
+     3    4  : 83ffe000 - 83ffffff  =>  83ff0000 - 83ff1fff
+     3    4  : 84000000 - 84ffffff  =>  80000000 - 80ffffff
+     3    4  : 85ffe000 - 85ffffff  =>  85ff0000 - 85ff1fff
+     3    4  : 86000000 - 86ffffff  =>  80000000 - 80ffffff
+     3    4  : 87ffe000 - 87ffffff  =>  87ff0000 - 87ff1fff
+     3    4  : 898e0000 - 898effff  =>  898f0000 - 898fffff
+     3    4  : 89ffe000 - 89ffffff  =>  87ff0000 - 87ff1fff
+     3    4  : 8a000000 - 8affffff  =>  88000000 - 88ffffff
+     3    4  : 8bffe000 - 8bffffff  =>  8bff0000 - 8bff1fff
+     3    4  : 8c000000 - 8cffffff  =>  88000000 - 88ffffff
+     3    4  : 8dffe000 - 8dffffff  =>  8dff0000 - 8dff1fff
+     3    4  : 8e000000 - 8effffff  =>  88000000 - 88ffffff
+     3    4  : 8fffe000 - 8fffffff  =>  8fff0000 - 8fff1fff
+     3    4  : 918e0000 - 918effff  =>  918f0000 - 918fffff
+     3    4  : 91ffe000 - 91ffffff  =>  91ff0000 - 91ff1fff
+     3    4  : 92000000 - 92ffffff  =>  90000000 - 90ffffff
+     3    4  : 93ffe000 - 93ffffff  =>  93ff0000 - 93ff1fff
+     3    4  : 94000000 - 94ffffff  =>  90000000 - 90ffffff
+     3    4  : 95ffe000 - 95ffffff  =>  95ff0000 - 95ff1fff
+     3    4  : 96000000 - 96ffffff  =>  90000000 - 90ffffff
+     3    4  : 97ffe000 - 97ffffff  =>  97ff0000 - 97ff1fff
+     3    4  : 998e0000 - 998effff  =>  998f0000 - 998fffff
+     3    4  : 99ffe000 - 99ffffff  =>  99ff0000 - 99ff1fff
+     3    4  : 9a000000 - 9affffff  =>  98000000 - 98ffffff
+     3    4  : 9bffe000 - 9bffffff  =>  9bff0000 - 9bff1fff
+     3    4  : 9c000000 - 9cffffff  =>  98000000 - 98ffffff
+     3    4  : 9dffe000 - 9dffffff  =>  9dff0000 - 9dff1fff
+     3    4  : 9e000000 - 9effffff  =>  98000000 - 98ffffff
+     3    4  : fe400000 - fe5fffff  =>  99000000 - 991fffff
+     3    4  : fe600000 - fe7fffff  =>  9b000000 - 9b1fffff
+     3    4  : fe800000 - fe9fffff  =>  9d000000 - 9d1fffff
+     3    4  : fea00000 - febfffff  =>  9f000000 - 9f1fffff
+     3    4  : fec00000 - fedfffff  =>  9f000000 - 9f1fffff
+     3    4  : fee00000 - ff3fffff  =>  99200000 - 997fffff
+     3    4  : ff800000 - ffbeffff  =>  99800000 - 99beffff
+     3    4  : fffe0000 - fffeebff  =>  9fff0000 - 9fffebff
+     3    4  : fffeec00 - fffeec7f  =>  998e0000 - 998e007f
+     3    4  : fffeec80 - fffeffff  =>  9fffec80 - 9fffffff
+---- Peripherals Memory Map ----
+  <START>      <END>
+  0x81800000 - 0x8180000f
+  0x818e0000 - 0x818e007f
+  0x81ffe400 - 0x81ffe41f
+  0x81ffe700 - 0x81ffe77f
+  0x81ffe800 - 0x81ffe83f
+  0x81ffe840 - 0x81ffe87f
+  0x81ffea00 - 0x81ffebf7
+  0x81ffec80 - 0x81ffecff
+  0x81ffed00 - 0x81ffed3f
+  0x81ffed80 - 0x81ffed83
+  0x83800000 - 0x8380000f
+  0x83ffe400 - 0x83ffe41f
+  0x83ffe700 - 0x83ffe77f
+  0x83ffe800 - 0x83ffe83f
+  0x83ffe840 - 0x83ffe87f
+  0x83ffea00 - 0x83ffebf7
+  0x83ffec80 - 0x83ffecff
+  0x83ffed00 - 0x83ffed3f
+  0x83ffed80 - 0x83ffed83
+  0x85800000 - 0x8580000f
+  0x85ffe400 - 0x85ffe41f
+  0x85ffe700 - 0x85ffe77f
+  0x85ffe800 - 0x85ffe83f
+  0x85ffe840 - 0x85ffe87f
+  0x85ffea00 - 0x85ffebf7
+  0x85ffec80 - 0x85ffecff
+  0x85ffed00 - 0x85ffed3f
+  0x85ffed80 - 0x85ffed83
+  0x87800000 - 0x8780000f
+  0x87ffe400 - 0x87ffe41f
+  0x87ffe700 - 0x87ffe77f
+  0x87ffe800 - 0x87ffe83f
+  0x87ffe840 - 0x87ffe87f
+  0x87ffea00 - 0x87ffebf7
+  0x87ffec80 - 0x87ffecff
+  0x87ffed00 - 0x87ffed3f
+  0x87ffed80 - 0x87ffed83
+  0x89800000 - 0x8980000f
+  0x898e0000 - 0x898e007f
+  0x89ffe400 - 0x89ffe41f
+  0x89ffe700 - 0x89ffe77f
+  0x89ffe800 - 0x89ffe83f
+  0x89ffe840 - 0x89ffe87f
+  0x89ffea00 - 0x89ffebf7
+  0x89ffec80 - 0x89ffecff
+  0x89ffed00 - 0x89ffed3f
+  0x89ffed80 - 0x89ffed83
+  0x8b800000 - 0x8b80000f
+  0x8bffe400 - 0x8bffe41f
+  0x8bffe700 - 0x8bffe77f
+  0x8bffe800 - 0x8bffe83f
+  0x8bffe840 - 0x8bffe87f
+  0x8bffea00 - 0x8bffebf7
+  0x8bffec80 - 0x8bffecff
+  0x8bffed00 - 0x8bffed3f
+  0x8bffed80 - 0x8bffed83
+  0x8d800000 - 0x8d80000f
+  0x8dffe400 - 0x8dffe41f
+  0x8dffe700 - 0x8dffe77f
+  0x8dffe800 - 0x8dffe83f
+  0x8dffe840 - 0x8dffe87f
+  0x8dffea00 - 0x8dffebf7
+  0x8dffec80 - 0x8dffecff
+  0x8dffed00 - 0x8dffed3f
+  0x8dffed80 - 0x8dffed83
+  0x8f800000 - 0x8f80000f
+  0x8fffe400 - 0x8fffe41f
+  0x8fffe700 - 0x8fffe77f
+  0x8fffe800 - 0x8fffe83f
+  0x8fffe840 - 0x8fffe87f
+  0x8fffea00 - 0x8fffebf7
+  0x8fffec80 - 0x8fffecff
+  0x8fffed00 - 0x8fffed3f
+  0x8fffed80 - 0x8fffed83
+  0x91800000 - 0x9180000f
+  0x918e0000 - 0x918e007f
+  0x91ffe400 - 0x91ffe41f
+  0x91ffe700 - 0x91ffe77f
+  0x91ffe800 - 0x91ffe83f
+  0x91ffe840 - 0x91ffe87f
+  0x91ffea00 - 0x91ffebf7
+  0x91ffec80 - 0x91ffecff
+  0x91ffed00 - 0x91ffed3f
+  0x91ffed80 - 0x91ffed83
+  0x93800000 - 0x9380000f
+  0x93ffe400 - 0x93ffe41f
+  0x93ffe700 - 0x93ffe77f
+  0x93ffe800 - 0x93ffe83f
+  0x93ffe840 - 0x93ffe87f
+  0x93ffea00 - 0x93ffebf7
+  0x93ffec80 - 0x93ffecff
+  0x93ffed00 - 0x93ffed3f
+  0x93ffed80 - 0x93ffed83
+  0x95800000 - 0x9580000f
+  0x95ffe400 - 0x95ffe41f
+  0x95ffe700 - 0x95ffe77f
+  0x95ffe800 - 0x95ffe83f
+  0x95ffe840 - 0x95ffe87f
+  0x95ffea00 - 0x95ffebf7
+  0x95ffec80 - 0x95ffecff
+  0x95ffed00 - 0x95ffed3f
+  0x95ffed80 - 0x95ffed83
+  0x97800000 - 0x9780000f
+  0x97ffe400 - 0x97ffe41f
+  0x97ffe700 - 0x97ffe77f
+  0x97ffe800 - 0x97ffe83f
+  0x97ffe840 - 0x97ffe87f
+  0x97ffea00 - 0x97ffebf7
+  0x97ffec80 - 0x97ffecff
+  0x97ffed00 - 0x97ffed3f
+  0x97ffed80 - 0x97ffed83
+  0x99800000 - 0x9980000f
+  0x998e0000 - 0x998e007f
+  0x99ffe400 - 0x99ffe41f
+  0x99ffe700 - 0x99ffe77f
+  0x99ffe800 - 0x99ffe83f
+  0x99ffe840 - 0x99ffe87f
+  0x99ffea00 - 0x99ffebf7
+  0x99ffec80 - 0x99ffecff
+  0x99ffed00 - 0x99ffed3f
+  0x99ffed80 - 0x99ffed83
+  0x9b800000 - 0x9b80000f
+  0x9bffe400 - 0x9bffe41f
+  0x9bffe700 - 0x9bffe77f
+  0x9bffe800 - 0x9bffe83f
+  0x9bffe840 - 0x9bffe87f
+  0x9bffea00 - 0x9bffebf7
+  0x9bffec80 - 0x9bffecff
+  0x9bffed00 - 0x9bffed3f
+  0x9bffed80 - 0x9bffed83
+  0x9d800000 - 0x9d80000f
+  0x9dffe400 - 0x9dffe41f
+  0x9dffe700 - 0x9dffe77f
+  0x9dffe800 - 0x9dffe83f
+  0x9dffe840 - 0x9dffe87f
+  0x9dffea00 - 0x9dffebf7
+  0x9dffec80 - 0x9dffecff
+  0x9dffed00 - 0x9dffed3f
+  0x9dffed80 - 0x9dffed83
+  0x9f800000 - 0x9f80000f
+  0x9fffe400 - 0x9fffe41f
+  0x9fffe700 - 0x9fffe77f
+  0x9fffe800 - 0x9fffe83f
+  0x9fffe840 - 0x9fffe87f
+  0x9fffea00 - 0x9fffebf7
+  0x9fffec80 - 0x9fffecff
+  0x9fffed00 - 0x9fffed3f
+  0x9fffed80 - 0x9fffed83
+  0xe0010000 - 0xe001003f
+  0xe0011000 - 0xe001101f
+  0xe4010000 - 0xe401003f
+  0xe4011000 - 0xe401101f
+  0xf3000000 - 0xf3ffffff
+  0xf4000000 - 0xf400ffff
+  0xffff7f00 - 0xffff7fff
+  0xffff8ffc - 0xffff8fff
+Plaese connet GDB to localhost:50004
+GDB has been connected.
+---- BEGIN MEASUREMENT ----
+Fibonacci_Abs,1844674406941458486,-1
+Fibonacci_Add,69,-1
+Fibonacci_Divide,87,-1
+Fibonacci_Fn,115,-1
+Fibonacci_Fn_1,124,-1
+Fibonacci_Gain,67,-1
+Fibonacci_Golden_ratio,25,-1
+Fibonacci_Saturation,205,-1
+Fibonacci_Subtract,78,-1
+,47,-1
+---- END MEASUREMENT ----
+P1:NM:T0:H: <PC Break (Before execution) at 0x0000193c>
+  P:1  V:N  T:N  PC:0x0000193c  Ins:    27409  Cyc:   145234
+  P:1  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:2  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:2  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:3  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:3  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:4  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:4  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:9  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:9  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:10  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:10  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:11  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:11  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:12  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:12  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:17  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:17  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:18  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:18  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:19  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:19  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:20  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:20  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:25  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:25  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:26  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:26  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:27  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:27  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0
+  P:28  V:N  T:N  PC:0x00000242  Ins:       15  Cyc:      135
+  P:28  V:N  T:0  PC:0x00000000  Ins:        0  Cyc:        0

@@ -1,0 +1,240 @@
+// -*- mode: java; c-basic-offset: 4; tab-width: 4; -*-
+
+//
+// Parser for .rtw file
+//
+
+package jp.ertl.simulink.rtw.parser;
+
+import java.util.List;
+import java.util.ArrayList;
+
+import java_cup.runtime.*;
+
+import jp.ertl.simulink.rtw.parser.RTWParserSym;
+import jp.ertl.simulink.rtw.RTWCompiledModel;
+import jp.ertl.simulink.rtw.RTWParam;
+import jp.ertl.simulink.rtw.RTWSectionBase;
+import jp.ertl.simulink.rtw.RTWBlock;
+import jp.ertl.simulink.rtw.RTWSystem;
+import jp.ertl.simulink.rtw.RTWSampleTime;
+
+class RTWParser;
+
+//init with {: scanner.init (); :};
+//scan with {: return scanner.next_token(); :};
+
+terminal LBRACE, RBRACE, LBRACK, RBRACK, LPARA, RPARA;
+terminal String BOOLEAN_LITERAL;
+terminal String INT_LITERAL;
+terminal String FLOAT_LITERAL;
+terminal String IDENTIFIER;
+terminal String STRING_LITERAL;
+
+terminal COLON, COMMA, SEMICOLON;
+terminal NEWLINE;
+
+non terminal RTWSectionBase			File;
+non terminal List<RTWSectionBase>	SectionList;
+non terminal RTWSectionBase			Section;
+non terminal Object					ParamAttr;
+non terminal RTWParam				Parameter;
+non terminal Object					Value;
+non terminal Object					Literal;
+non terminal List<Object>			LiteralList;
+non terminal Object					DimensionElement;
+non terminal Object					Complex;
+non terminal List<Object>			ComplexList;
+non terminal List<Object>			Array;
+non terminal List<Object>			SectionContext;
+non terminal Object					SectionContextElement;
+non terminal						NL;
+non terminal						ParamSep;
+non terminal						Empty;
+
+start with File;
+
+/*
+ * whole File
+ */
+File ::= SectionList:l
+	{: RESULT = new RTWSectionBase("*File*", l, new ArrayList<RTWParam>()); :}
+	;
+
+/*
+ * Sections
+ */
+SectionList ::= SectionList:l Section:s
+	{: l.add(s); RESULT = l; :}
+	| Section:s
+	{: ArrayList<RTWSectionBase> list = new ArrayList<RTWSectionBase>();
+	  list.add(s);
+	  RESULT = list; :}
+	;
+
+/*
+ * identifier { ... } or identifier {}
+ */
+Section ::= IDENTIFIER:i LBRACE NL SectionContext:l RBRACE NL
+	{: ArrayList<RTWSectionBase> slist = new ArrayList<RTWSectionBase>();
+	   ArrayList<RTWParam> plist = new ArrayList<RTWParam>();
+	   for (Object o : l) {
+	     if (o instanceof RTWSectionBase) {
+	       slist.add((RTWSectionBase)o);
+	     } else if (o instanceof RTWParam) {
+	       plist.add((RTWParam)o);
+	     }
+	   }
+	   if (i.equals("CompiledModel")) {
+	     RESULT = new RTWCompiledModel(i, slist, plist);
+	   } else if (i.equals("System") || i.equals("Subsystem")) {
+	     RESULT = new RTWSystem(i, slist, plist);
+	   } else if (i.equals("Block")) {
+	     RESULT = new RTWBlock(i, slist, plist);
+	   } else if (i.equals("SampleTime")) {
+	     RESULT = new RTWSampleTime(i, slist, plist);
+	   } else {
+	     RESULT = new RTWSectionBase(i, slist, plist);
+	   } :}
+	| IDENTIFIER:i LBRACE NL RBRACE NL
+	{: RESULT = new RTWSectionBase(i); :}
+	;
+
+/*
+ * Section Context
+ */
+SectionContext ::= SectionContext:l SectionContextElement:e
+	{: l.add(e); RESULT = l; :}
+	| SectionContextElement:e
+	{: ArrayList<Object> list = new ArrayList<Object>();
+	  list.add(e);
+	  RESULT = list; :}
+	;
+
+/*
+ * Section Element:
+ *   <Section> or <Parameter>
+ */
+SectionContextElement ::= Section:s
+	{: RESULT = s; :}
+	| Parameter:p
+	{: RESULT = p; :}
+	;
+
+/*
+ * Parameter:
+ *   identifier value
+ */
+Parameter ::= IDENTIFIER:i Value:v
+	{: RESULT = new RTWParam (i, v); :}
+	;
+
+/*
+ * Dimension:
+ *   `[' 6 `]'
+ */
+DimensionElement ::= LBRACK INT_LITERAL:i RBRACK
+	{: RESULT = new String("[" + i + "]"); :}
+	;
+
+/*
+ * special case for value:
+ *   Matric(1,2)
+ *   Parameter[1]
+ */
+ParamAttr ::= IDENTIFIER:i LPARA LiteralList:j RPARA
+	{: RESULT = new String("*** TODO " + i + "(...)"); :}
+	| IDENTIFIER:i DimensionElement:j
+	{: RESULT = new String(i + j); :}
+	;
+
+/*
+ * SLDataModeName(...)
+ * Matric(2,2)[[...],...]
+ * Parameter[1]
+ * SLData(0)
+ * [0:8]
+ * <Complex>
+ */
+Value ::= IDENTIFIER:i LPARA IDENTIFIER:s RPARA NEWLINE
+	{: RESULT = new String(i + "(" + s + ")"); :}
+	| ParamAttr:i NL Array:a NEWLINE
+	{: RESULT = new String(i + "[...]"); :}
+	| ParamAttr:i NEWLINE
+	{: RESULT = i; :}
+	| LBRACK Literal:i COLON Literal:j RBRACK NEWLINE
+	{: ArrayList<Object> a = new ArrayList<Object>();
+	   a.add(new String(i + ":" + j)); RESULT = a; :}
+	| Complex:i NEWLINE
+	{: RESULT = i; :}
+	;
+
+/*
+ * Integer, floating, boolean, and string
+ */
+Literal ::= INT_LITERAL:i
+	{: RESULT = i; :}
+	| FLOAT_LITERAL:f
+	{: RESULT = f; :}
+	| BOOLEAN_LITERAL:b
+	{: RESULT = b; :}
+	| STRING_LITERAL:s
+	{: RESULT = s; :}
+	;
+
+/*
+ * List of literal
+ */
+LiteralList ::= LiteralList:l ParamSep Literal:i
+	{: l.add(i); RESULT = l; :}
+	| Literal:i
+	{: ArrayList<Object> l = new ArrayList<Object>();
+	  l.add(i); RESULT = l; :}
+	;
+
+/*
+ * complex:
+ *  literal, identifier, and Array(List)
+ */
+Complex ::= Literal:i
+	{: RESULT = i; :}
+	| IDENTIFIER:i
+	{: RESULT = i; :}
+	| Array:a
+	{: RESULT = a; :}
+	;
+
+/*
+ * List of <Complex>
+ */
+ComplexList ::= ComplexList:l ParamSep Complex:i
+	{: l.add(i); RESULT = l; :}
+	| Complex:i
+	{: ArrayList<Object> l = new ArrayList<Object>();
+	   l.add(i); RESULT = l; :}
+	;
+
+/*
+ * any Array:
+ *  `[' ... `]'
+ *  `[]'
+ */
+Array ::= LBRACK ComplexList:l ParamSep RBRACK
+	{: RESULT = l; :}
+	| LBRACK RBRACK
+	{: RESULT = new ArrayList<Object>(); :}
+	;
+
+/*
+ * Empty or LineTerminater
+ */
+NL ::= NEWLINE | Empty;
+
+/*
+ * separater (reasonable but not exactly):
+ *   `,', `;' (or white space)
+ */
+ParamSep ::= COMMA | SEMICOLON | Empty;
+
+/* empty, nothing */
+Empty ::= ;

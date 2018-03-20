@@ -1,0 +1,315 @@
+
+                       モデルベース並列化公開対応
+
+                    NECソリューションイノベータ株式会社
+                              2018/3/2
+
+1. はじめに
+
+この度はご発注いただき誠にありがとうございました。
+以下のものを納入致しますのでご査収のほどよろしくお願いいたします。
+
+・ソースコード
+・VM
+・作業報告書
+
+2. 本ディレクトリに含まれるもの
+
+モデルベース並列化公開対応
+│
+├─納品物一覧.txt
+│
+├─作業報告書.docx
+│
+├─ソースコード
+│  ├─Simulink_XSD
+│  │  │  Makefile                                      (Makefile)
+│  │  │  README.txt                                    (簡易メモ)
+│  │  │  README_BLXMLPerf.txt                          (BLXMLPerf簡易メモ)
+│  │  │  SHIM.xml                                      (テスト用SHIM)
+│  │  │  SimulinkModel.m4                              (XMLスキーマソース)
+│  │  │  SimulinkRTW.cxx                               (SimulinkRTWソース)
+│  │  │  SimulinkRTW.h                                 (SimulinkRTWヘッダ)
+│  │  │  SimulinkXML.cxx                               (SimulinkXMLソース)
+│  │  │  SimulinkXML.h                                 (SimulinkXMLヘッダ)
+│  │  │  SimulinkXSD.xlsx                              (XMLスキーマ説明)
+│  │  │  add_block_info.cxx                            (ブロック情報追加)
+│  │  │  blxml_llvm.cxx                                (BLXMLアクセス用コード)
+│  │  │  blxml_llvm.h                                  (BLXMLアクセス用ヘッダ)
+│  │  │  blxml2code.cxx                                (性能計測用コード生成)
+│  │  │  blxml-perf.sh                                 (性能計測用スクリプト)
+│  │  │  boost_llvm.cxx                                (BLXMLアクセス用コード)
+│  │  │  boost_llvm.h                                  (BLXMLアクセス用ヘッダ)
+│  │  │  dump_block_list.cxx                           (ブロックダンプ)
+│  │  │  llvm-BLXMLPerf.cxx                            (LLVMソースコード)
+│  │  │  llvm-BLXMLPerf.h                              (LLVMソースヘッダ)
+│  │  │  mingw.conf.mk                                 (MinGW用設定ファイル)
+│  │  │  mingw_correct.sh                              (MinGW用スクリプト)
+│  │  │  rtw_test.cxx                                  (rtw_testソース)
+│  │  │  shim.xsd                                      (SHIMスキーマ)
+│  │  │  shim_llvm.cxx                                 (SHIMアクセス用ソース)
+│  │  │  shim_llvm.h                                   (SHIMアクセス用ヘッダ)
+│  │  │  test.conf.mk                                  (テストデータ設定ファイル)
+│  │  │  xml_test.cxx                                  (テストデータ設定ファイル)
+│  │  │  xsd_driver.cxx                                (XSD動作確認用)
+│  │  │  
+│  │  ├─models
+│  │  │  ├─pid
+│  │  │  │      pid_controller1.xml                   (修正前XML)
+│  │  │  │      xx.xml                                (修正XML)
+│  │  │  │      yy.xml                                (出力結果[xml])
+│  │  │  │      test_xml.dot                          (出力結果[dot])
+│  │  │  │      test_blxml.xml                        (出力結果[BLXML])
+│  │  │  │      
+│  │  │  ├─test1
+│  │  │  │      testsys.xml                           (修正前XML)
+│  │  │  │      xx.xml                                (修正XML)
+│  │  │  │      yy.xml                                (出力結果[xml])
+│  │  │  │      test_xml.dot                          (出力結果[dot])
+│  │  │  │      test_blxml.xml                        (出力結果[BLXML])
+│  │  │  │      
+│  │  │  └─testmux
+│  │  │          testmux3.xml                          (修正前XML)
+│  │  │          xx.xml                                (修正XML)
+│  │  │          yy.xml                                (出力結果[xml])
+│  │  │          test_xml.dot                          (出力結果[dot])
+│  │  │          test_blxml.xml                        (出力結果[BLXML])
+│  │  │          
+│  │  ├─models2
+│  │  │  ├─cell
+│  │  │  │      vipcellcounting_win.xml               (修正前XML)
+│  │  │  │      xx.xml                                (修正XML)
+│  │  │  │      yy.xml                                (出力結果[xml])
+│  │  │  │      test_xml.dot                          (出力結果[dot])
+│  │  │  │      
+│  │  │  └─Mfunc
+│  │  │          mfunction2.xml                        (修正前XML)
+│  │  │          yy.xml                                (出力結果[xml])
+│  │  │          test_xml.dot                          (出力結果[dot])
+│  │  │          test_blxml.xml                        (出力結果[BLXML])
+│  │  │          
+│  │  ├─temp
+│  │  │      JIKKEN_trigger_7.xml                      (修正前XML)
+│  │  │      xx.xml                                    (修正XML)
+│  │  │      yy.xml                                    (出力結果[xml])
+│  │  │      test_xml.dot                              (出力結果[dot])
+│  │  │      test_blxml.xml                            (出力結果[BLXML])
+│  │  │      
+│  │  ├─0911
+│  │  │  └─synrmmodel_mt_RTW_ert_rtw_140911
+│  │  │          synrmmodel_mt_RTW.xml                 (修正前XML)
+│  │  │          xx.xml                                (修正XML)
+│  │  │          yy.xml                                (出力結果[xml])
+│  │  │          
+│  │  ├─0925
+│  │  │      synrmmodel_mt_RTW.xml                     (修正前XML)
+│  │  │      yy.xml                                    (出力結果[xml])
+│  │  │      test_xml.dot                              (出力結果[dot])
+│  │  │      test_blxml.xml                            (出力結果[BLXML])
+│  │  │      
+│  │  └─java
+│  │      │  build.xml                                 (antビルド用XML)
+│  │      │      
+│  │      │  AddMeasurement.sh                         (AddMeasurementスクリプト)
+│  │      ├─AddMeasurement
+│  │      │      AddMeasurement.java
+│  │      │      
+│  │      │      
+│  │      │  SetMeasuringResult.sh                     (SetMeasuringResultスクリプト)
+│  │      ├─SetMeasuringResult
+│  │      │      SetMeasuringResult.java               (SetMeasuringResultソース)
+│  │      │      
+│  │      │  GetRate.sh                                (GetRateスクリプト)
+│  │      ├─GetRate
+│  │      │      GetRate.java                          (GetRateソース)
+│  │      │      
+│  │      │  SetRate.sh                                (SetRateスクリプト)
+│  │      ├─SetRate
+│  │      │      SetRate.java                          (SetRateソース)
+│  │      │      
+│  │      ├─grammer
+│  │      │      RTWScanner.flex                       (RTWファイル用スキャナ)
+│  │      │      RTWParser.cup                         (RTWファイル用パーサー)
+│  │      │      
+│  │      ├─schema
+│  │      │      jaxb-prop.xjb                         (JAXBプロパティ)
+│  │      │      readme-schema.txt                     (スキーマ向けREADME)
+│  │      │      
+│  │      ├─samples
+│  │      │  └─RTW_Measurement
+│  │      │      ├─measurement_cforest               (CForest用環境)
+│  │      │      │   │  MyEnv.sh                     (環境設定)
+│  │      │      │   │  Makefile                     (トップレベルmakefile)
+│  │      │      │   │  Template-user.mk             (user.mkのテンプレート)
+│  │      │      │   │  readme.txt                   (READMEファイル)
+│  │      │      │   │  run.sh                       (計測実行スクリプト)
+│  │      │      │   │  cforest.sh                   (CForest実行スクリプト)
+│  │      │      │   │  gdb.sh                       (gdb実行スクリプト)
+│  │      │      │   │  measurement.mk               (ビルド用サブmakefile)
+│  │      │      │   │  changedir.mk                 (移動用サブmakefile)
+│  │      │      │   │  
+│  │      │      │   ├─lib
+│  │      │      │   │      boot.s                   (ブートストラップコード)
+│  │      │      │   │      hwdep.h                  (HW依存ヘッダ)
+│  │      │      │   │      hwdep.c                  (HW依存コード)
+│  │      │      │   │      sample.ld                (リンカスクリプト)
+│  │      │      │   │      
+│  │      │      │   ├─include
+│  │      │      │   │      measure_cforest.h        (CForest向け計測用ヘッダ)
+│  │      │      │   │      
+│  │      │      │   └─sub
+│  │      │      │           gdb-command.x            (GDBコマンドスクリプト)
+│  │      │      │           gdb.py                   (CForest設定ファイル)
+│  │      │      │           
+│  │      │      ├─sample_synrmmodel                 (symrmmodelサンプル)
+│  │      │      │      Makefile                      (トップレベルmakefile)
+│  │      │      │      user.mk                       (個別設定サブmakefile)
+│  │      │      │      measure.c                     (計測Cコード)
+│  │      │      │      measure.h                     (計測Cコード)
+│  │      │      │      
+│  │      │      └─sample_c_gmres                    (c_gmresサンプル)
+│  │      │              Makefile                      (トップレベルmakefile)
+│  │      │              user.mk                       (個別設定サブmakefile)
+│  │      │              c_gmres_measure.h             (計測Cコード)
+│  │      │              c_gmres_measure.c             (計測Cコード)
+│  │      │              
+│  │      ├─src
+│  │      │  └─jp
+│  │      │      └─ertl
+│  │      │          ├─utils
+│  │      │          │      SimpleCSV.java            (簡単なCSVのクラス)
+│  │      │          │      Getopts.java              (オプション処理クラス)
+│  │      │          │      
+│  │      │          └─simulink
+│  │      │              ├─BLXML
+│  │      │              │      SchemaDefine.java     (スキーマのURL等の定義)
+│  │      │              │      
+│  │      │              └─rtw
+│  │      │                      RTWSectionBase.java   (Sectionのベースクラス)
+│  │      │                      RTWParam.java         (Paramのクラス)
+│  │      │                      RTWSystem.java        (Systemのクラス)
+│  │      │                      RTWBlock.java         (Blockのクラス)
+│  │      │                      RTWSampleTime.java    (Sample時間のクラス)
+│  │      │                      RTWCompiledModel.java (CompiledModelのクラス)
+│  │      │                      
+│  │      └─lib
+│  │              readme-cup.txt                        (CUPライブラリ用README)
+│  │              
+│  │              
+│  └─csp_translator
+│      │  GEN-c_gmres.sh                      (コード生成スクリプト)
+│      │  GEN-synrmmodel.sh                   (コード生成スクリプト)
+│      │  readme.txt                          (簡易メモ)
+│      │  Doxyfile                            (doxygen用定義ファイル)
+│      │  Makefile                            (Makefile)
+│      │  mingw.conf.mk                       (MinGW用設定ファイル)
+│      │  test.conf.mk                        (テスト用設定ファイル)
+│      │  csp_translator.cxx                  (トランスレータソース)
+│      │  csp_translator.h                    (上記ヘッダファイル)
+│      │  xml_csp.cxx                         (BLSXML入力用ソース)
+│      │  xml_csp.h                           (上記ヘッダファイル)
+│      │  xml_csp_i.h                         (相互参照用ヘッダファイル)
+│      │  arch_memchan.cxx                    (メモリ上のチャネル用ソース)
+│      │  arch_memchan.h                      (上記ヘッダファイル)
+│      │  c_codewriter.cxx                    (Cコード生成用共通ソース)
+│      │  c_codewriter.h                      (上記ヘッダファイル)
+│      │  atk2_generator.cxx                  (ATK2コード生成用ソース)
+│      │  atk2_generator.h                    (上記ヘッダファイル)
+│      │  atk2_generator_i.h                  (上記インタフェース定義)
+│      │  atk2_dump_dbg_print.cxx             (ATK2デバッグマクロ生成ソース)
+│      │  mcos_generator.cxx                  (eMCOSコード生成用ソース)
+│      │  mcos_generator.h                    (上記ヘッダファイル)
+│      │  mcos_dump_dbg_print.cxx             (eMCOSデバッグマクロ生成ソース)
+│      │  smbp_generator.cxx                  (SystemBuilderコード生成用ソース)
+│      │  smbp_generator.h                    (上記ヘッダファイル)
+│      │  smbp_generator_i.h                  (上記インタフェース定義)
+│      │  support_yaml.cxx                    (YAML入力用ソース)
+│      │  support_yaml.h                      (上記ヘッダファイル)
+│      │  
+│      ├─pe_test
+│      │      Makefile                        (Makefile)
+│      │      c_gmres.csv                     (c_gmres用タスク設定)
+│      │      c_gmres.xml                     (c_gmres用タスク統合済みBLSXML)
+│      │      synrmmodel.csv                  (synrmmodel用タスク設定)
+│      │      synrmmodel.xml                  (synrmmodel用タスク統合済BLSXML)
+│      │      
+│      ├─tst_mcos
+│      │  │  Makefile                        (Makefile)
+│      │  │  check-c_gmres.sh                (c_gmres結果確認スクリプト)
+│      │  │  check-synrm.sh                  (synrmmodel結果確認スクリプト)
+│      │  │  d2f.pl                          (浮動小数点結果結果確認スクリプト)
+│      │  │  dead-lock-check.pl              (デバッグ用)
+│      │  │  gen-dbg-print.sh                (デバッグ出力コード生成スクリプト)
+│      │  │  testout-c_gmres.h               (c_gmres用ヘッダファイル)
+│      │  │  testout-synrmmodel.h            (synrmmodel用ヘッダファイル)
+│      │  │  testout-jikken_7.all.h          (jikken_7用全デバッグ用ヘッダファイル)
+│      │  │  testout-jikken_7.h              (jikken_7用ヘッダファイル)
+│      │  │  testout-rate_synrm.all.h        (synrmmodelマルチレート全デバッグ用ヘッダファイル)
+│      │  │  testout-rate_synrm.h            (synrmmodelマルチレート用ヘッダファイル)
+│      │  │  
+│      │  └─mcos
+│      │          genres.pl                   (リソース生成スクリプト)
+│      │          mcos.h                      (eMCOSエミュレーションヘッダファイル)
+│      │          mcos_ds.h                   (上記デバッグログ用ヘッダ)
+│      │          
+│      ├─tst_atk2
+│      │  │  
+│      │  ├─atk2
+│      │  │  │  common.mk                   (共通のinclude用Makefile)
+│      │  │  │  Makefile.tmpl               (Makefileのテンプレート)
+│      │  │  │  
+│      │  │  ├─include
+│      │  │  │  │  Os.h                    (エミュレーション用ヘッダファイル)
+│      │  │  │  │  prc_sil.h               (API無効化マクロ)
+│      │  │  │  │  t_stdlib.h              (stdlib.hのincludeのみ)
+│      │  │  │  │  t_syslog.h              (ダミーのsyslog定義ファイル)
+│      │  │  │  │  target_hw_counter.h     (ダミーファイル)
+│      │  │  │  │  target_serial.h         (ダミーファイル)
+│      │  │  │  │  target_sysmod.h         (ダミーファイル)
+│      │  │  │  │
+│      │  │  │  └─sysmod
+│      │  │  │          banner.h            (ダミーファイル)
+│      │  │  │          serial.h            (ダミーファイル)
+│      │  │  │          syslog.h            (ダミーファイル)
+│      │  │  │
+│      │  │  ├─src
+│      │  │  │      os_wrapper.c            (ATK2のAPIのエミュレーション)
+│      │  │  │
+│      │  │  ├─static
+│      │  │  │      ambp_main.c             (A-MBP対応のメイン関数)
+│      │  │  │      aos.h                   (A-MBP対応のヘッダファイル)
+│      │  │  │      basic.yaml              (基本的なABREXの設定ファイル)
+│      │  │  │      counter_handler.c       (カウンタハンドラのソース)
+│      │  │  │      counter_handler.h       (カウンタハンドラのヘッダファイル)
+│      │  │  │
+│      │  │  ├─support
+│      │  │  │      event_debug.h           (イベント向けデバッグマクロ)
+│      │  │  │
+│      │  │  └─tools
+│      │  │          abrexyaml2pthread-c.pl  (ABREXからpthread変換用スクリプト)
+│      │  │          tracecheck.pl           (ログ出力整形出力用スクリプト)
+│      │  │
+│      │  └─multirate2
+│      │          emulate-def.mk              (エミュレーション用定義ファイル)
+│      │          emulate-rule.mk             (エミュレーション実行用ルール)
+│      │          Makefile                    (Makefile)
+│      │          multirate2-app.h            (ABREXのパラメタ設定用ヘッダファイル)
+│      │          multirate2-app.yaml         (multirate2のABREXのYAMLファイル)
+│      │          multirate2-output.c         (multirate2並列化Cコード)
+│      │          testout_dbg.h               (デバッグ用ヘッダファイル)
+│      │          testout_dbgprt.h            (デバッグ表示用ヘッダファイル)
+│      │
+│      └─tst_smbp
+│              config_example.yaml             (コンフィグレーション例)
+│
+└─VM
+    │              
+    ├─MBP
+    │    MBP.vbox                              (MBP評価用VMの設定)
+    │    MBP.vdi                               (MBP評価用VMのディスクイメージ)
+    │              
+    ├─VM.md                                   (MBP評価用VMの説明)
+    │              
+    └─README.md                               (MBP評価環境の説明)
+  
+以上

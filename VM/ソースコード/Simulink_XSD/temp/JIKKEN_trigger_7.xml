@@ -1,0 +1,1122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sm:blocks xmlns:sm="http://example.com/SimulinkModel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="JIKKEN_trigger_7" xsi:schemaLocation="http://example.com/SimulinkModel SimulinkModel.xsd">
+   <block blocktype="Constant" name="JIKKEN_trigger_7_Constant4" rate="inf">
+      <output line="JIKKEN_trigger_7_Constant4_1" port="JIKKEN_trigger_7_Constant4_1">
+         <connect block="JIKKEN_trigger_7_RelationalOperator3" port="JIKKEN_trigger_7_RelationalOperator3_1"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="JIKKEN_trigger_7_Delayforfeedback" rate="-1">
+      <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_1" port="JIKKEN_trigger_7_Delayforfeedback_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out"/>
+      </input>
+      <output line="JIKKEN_trigger_7_Delayforfeedback_1" port="JIKKEN_trigger_7_Delayforfeedback_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current"/>
+      </output>
+   </block>
+   <block blocktype="UnitDelay" name="JIKKEN_trigger_7_Delayforfeedback1" rate="-1">
+      <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_Delayforfeedback1_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out"/>
+      </input>
+      <output line="JIKKEN_trigger_7_Delayforfeedback1_1" port="JIKKEN_trigger_7_Delayforfeedback1_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_Maketargetvalue">
+      <input line="JIKKEN_trigger_7_Samplesignal_1" port="JIKKEN_trigger_7_Maketargetvalue_In1">
+         <connect block="JIKKEN_trigger_7_Samplesignal" port="JIKKEN_trigger_7_Samplesignal_y"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PulseGenerator2_1" port="JIKKEN_trigger_7_Maketargetvalue_Trigger">
+         <connect block="JIKKEN_trigger_7_PulseGenerator2" port="JIKKEN_trigger_7_PulseGenerator2_1"/>
+      </input>
+      <output line="JIKKEN_trigger_7_Maketargetvalue_1" port="JIKKEN_trigger_7_Maketargetvalue_Out1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target"/>
+         <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_Maketargetvalue_In1" rate="-1">
+            <output line="JIKKEN_trigger_7_Maketargetvalue_In1_1" port="JIKKEN_trigger_7_Maketargetvalue_In1_1">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r"/>
+            </output>
+         </block>
+         <block blocktype="TriggerPort" name="JIKKEN_trigger_7_Maketargetvalue_Trigger" rate="1"/>
+         <block blocktype="SubSystem" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF" rate="-1">
+            <input line="JIKKEN_trigger_7_Maketargetvalue_In1_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_In1" port="JIKKEN_trigger_7_Maketargetvalue_In1_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_UnitDelay" port="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_UnitDelay" port="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1"/>
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_Out1" port="JIKKEN_trigger_7_Maketargetvalue_Out1_1"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1"/>
+                  </output>
+               </block>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_2"/>
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_2"/>
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1"/>
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_3"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_2">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Integrator_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_3">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_2">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_2">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_2">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_2">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Filter_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u" rate="-1">
+                  <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u_1">
+                     <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_Sum_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="UnitDelay" name="JIKKEN_trigger_7_Maketargetvalue_UnitDelay" rate="-1">
+            <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1" port="JIKKEN_trigger_7_Maketargetvalue_UnitDelay_1">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_y"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_Maketargetvalue_Out1" rate="-1">
+            <input line="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_Maketargetvalue_Out1_1">
+               <connect block="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_Maketargetvalue_DiscretePIDController_2DOF_u"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="DiscretePulseGenerator" name="JIKKEN_trigger_7_ModeSelector" rate="1">
+      <output line="JIKKEN_trigger_7_ModeSelector_1" port="JIKKEN_trigger_7_ModeSelector_1">
+         <connect block="JIKKEN_trigger_7_MultiportSwitch" port="JIKKEN_trigger_7_MultiportSwitch_1"/>
+      </output>
+   </block>
+   <block blocktype="MultiPortSwitch" name="JIKKEN_trigger_7_MultiportSwitch" rate="-1">
+      <input line="JIKKEN_trigger_7_ModeSelector_1" port="JIKKEN_trigger_7_MultiportSwitch_1">
+         <connect block="JIKKEN_trigger_7_ModeSelector" port="JIKKEN_trigger_7_ModeSelector_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PulseGenerator_1" port="JIKKEN_trigger_7_MultiportSwitch_2">
+         <connect block="JIKKEN_trigger_7_PulseGenerator" port="JIKKEN_trigger_7_PulseGenerator_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PulseGenerator1_1" port="JIKKEN_trigger_7_MultiportSwitch_3">
+         <connect block="JIKKEN_trigger_7_PulseGenerator1" port="JIKKEN_trigger_7_PulseGenerator1_1"/>
+      </input>
+      <output line="JIKKEN_trigger_7_MultiportSwitch_1" port="JIKKEN_trigger_7_MultiportSwitch_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_Trigger"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven">
+      <input line="JIKKEN_trigger_7_Maketargetvalue_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target">
+         <connect block="JIKKEN_trigger_7_Maketargetvalue" port="JIKKEN_trigger_7_Maketargetvalue_Out1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_Delayforfeedback1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current">
+         <connect block="JIKKEN_trigger_7_Delayforfeedback1" port="JIKKEN_trigger_7_Delayforfeedback1_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_triggerfortheta_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_Trigger">
+         <connect block="JIKKEN_trigger_7_triggerfortheta" port="JIKKEN_trigger_7_triggerfortheta_theta_trigger"/>
+      </input>
+      <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out">
+         <connect block="JIKKEN_trigger_7_Delayforfeedback1" port="JIKKEN_trigger_7_Delayforfeedback1_1"/>
+         <connect block="JIKKEN_trigger_7_Switch" port="JIKKEN_trigger_7_Switch_3"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target" rate="-1">
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r"/>
+            </output>
+         </block>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current" rate="-1">
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y"/>
+            </output>
+         </block>
+         <block blocktype="TriggerPort" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_Trigger" rate="1"/>
+         <block blocktype="SubSystem" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_target_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_current_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out_1"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1"/>
+                  </output>
+               </block>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_2"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_2"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_3"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Integrator_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_3">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Filter_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_Sum_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_DiscretePIDController_2DOF_u"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1">
+      <input line="JIKKEN_trigger_7_PLANT_Motortheta_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta">
+         <connect block="JIKKEN_trigger_7_PLANT_Motortheta" port="JIKKEN_trigger_7_PLANT_Motortheta_Theta"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PulseGenerator3_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Trigger">
+         <connect block="JIKKEN_trigger_7_PulseGenerator3" port="JIKKEN_trigger_7_PulseGenerator3_1"/>
+      </input>
+      <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm">
+         <connect block="JIKKEN_trigger_7_RelationalOperator3" port="JIKKEN_trigger_7_RelationalOperator3_2"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta" rate="-1">
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1"/>
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_2"/>
+            </output>
+         </block>
+         <block blocktype="TriggerPort" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Trigger" rate="1"/>
+         <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_2">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1" rate="inf">
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2" rate="inf">
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant2_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm_1"/>
+            </output>
+         </block>
+         <block blocktype="Delay" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Constant1_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_2">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_2"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_IntegerDelay_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_2">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_2"/>
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_2"/>
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_3"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Add_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_2">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_RelationalOperator3_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_3">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Subtract_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Switch_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Gain_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic">
+      <input line="JIKKEN_trigger_7_Maketargetvalue_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target">
+         <connect block="JIKKEN_trigger_7_Maketargetvalue" port="JIKKEN_trigger_7_Maketargetvalue_Out1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_Delayforfeedback_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current">
+         <connect block="JIKKEN_trigger_7_Delayforfeedback" port="JIKKEN_trigger_7_Delayforfeedback_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_MultiportSwitch_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_Trigger">
+         <connect block="JIKKEN_trigger_7_MultiportSwitch" port="JIKKEN_trigger_7_MultiportSwitch_1"/>
+      </input>
+      <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out">
+         <connect block="JIKKEN_trigger_7_Delayforfeedback" port="JIKKEN_trigger_7_Delayforfeedback_1"/>
+         <connect block="JIKKEN_trigger_7_Switch" port="JIKKEN_trigger_7_Switch_1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target" rate="-1">
+            <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r"/>
+            </output>
+         </block>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current" rate="-1">
+            <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y"/>
+            </output>
+         </block>
+         <block blocktype="TriggerPort" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_Trigger" rate="1"/>
+         <block blocktype="SubSystem" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_target_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_current_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out_1"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1"/>
+                  </output>
+               </block>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y" rate="SampleTime">
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_2"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_2"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1"/>
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_3"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1"/>
+                  </output>
+               </block>
+               <block blocktype="DiscreteIntegrator" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_2"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1"/>
+                  </output>
+               </block>
+               <block blocktype="Gain" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Integrator_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_3">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingProportional_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum1_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_ProportionalGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_r_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum2_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_IntegralGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SetpointWeightingDerivative_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_y_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum3_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </output>
+               </block>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_DerivativeGain_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_2">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Filter_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_SumD_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_FilterCoefficient_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u" rate="-1">
+                  <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u_1">
+                     <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_Sum_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out" rate="-1">
+            <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_1" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out_1">
+               <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_DiscretePIDController_2DOF_u"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_PLANT_Motortheta">
+      <input line="JIKKEN_trigger_7_Switch_1" port="JIKKEN_trigger_7_PLANT_Motortheta_DUMMY_in">
+         <connect block="JIKKEN_trigger_7_Switch" port="JIKKEN_trigger_7_Switch_1"/>
+      </input>
+      <output line="JIKKEN_trigger_7_PLANT_Motortheta_1" port="JIKKEN_trigger_7_PLANT_Motortheta_Theta">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_theta"/>
+         <connect block="JIKKEN_trigger_7_triggerfortheta" port="JIKKEN_trigger_7_triggerfortheta_theta"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_PLANT_Motortheta_DUMMY_in" rate="-1">
+            <output port="JIKKEN_trigger_7_PLANT_Motortheta_DUMMY_in_1" type="none"/>
+         </block>
+         <block blocktype="Sum" name="JIKKEN_trigger_7_PLANT_Motortheta_Add1" rate="-1">
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_2">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1" port="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1"/>
+            </output>
+         </block>
+         <block blocktype="DataTypeConversion" name="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion" rate="-1">
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_1" port="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1" port="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_Theta" port="JIKKEN_trigger_7_PLANT_Motortheta_Theta_1"/>
+            </output>
+         </block>
+         <block blocktype="SubSystem" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator">
+            <output line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_Add1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Sum" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_2">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1"/>
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1"/>
+                  </output>
+               </block>
+               <block blocktype="Constant" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant" rate="inf">
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Constant_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1"/>
+                  </output>
+               </block>
+               <block blocktype="Fcn" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Delay" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_IntegerDelay_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Add_2"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Out1_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn" port="JIKKEN_trigger_7_PLANT_Motortheta_LampfunctionforCSPtranslator_Fcn_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="UnitDelay" name="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1" rate="-1">
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_1" port="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_Add1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_2"/>
+            </output>
+         </block>
+         <block blocktype="SubSystem" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit">
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_Add1" port="JIKKEN_trigger_7_PLANT_Motortheta_Add1_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion" port="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1"/>
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1" port="JIKKEN_trigger_7_PLANT_Motortheta_UnitDelay1_1"/>
+            </output>
+            <sm:blocks>
+               <block blocktype="Inport" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1" rate="-1">
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_2"/>
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_3"/>
+                  </output>
+               </block>
+               <block blocktype="Constant" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2" rate="inf">
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1"/>
+                  </output>
+               </block>
+               <block blocktype="Constant" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3" rate="inf">
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1"/>
+                  </output>
+               </block>
+               <block blocktype="RelationalOperator" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant3_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_2">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_2"/>
+                  </output>
+               </block>
+               <block blocktype="Switch" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Constant2_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_2">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_RelationalOperator1_1"/>
+                  </input>
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_3">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_In1_1"/>
+                  </input>
+                  <output line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1_1"/>
+                  </output>
+               </block>
+               <block blocktype="Outport" name="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1" rate="-1">
+                  <input line="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Out1_1">
+                     <connect block="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch" port="JIKKEN_trigger_7_PLANT_Motortheta_theta_limit_Switch_1"/>
+                  </input>
+               </block>
+            </sm:blocks>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_PLANT_Motortheta_Theta" rate="-1">
+            <input line="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1" port="JIKKEN_trigger_7_PLANT_Motortheta_Theta_1">
+               <connect block="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion" port="JIKKEN_trigger_7_PLANT_Motortheta_DataTypeConversion_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="DiscretePulseGenerator" name="JIKKEN_trigger_7_PulseGenerator" rate="1">
+      <output line="JIKKEN_trigger_7_PulseGenerator_1" port="JIKKEN_trigger_7_PulseGenerator_1">
+         <connect block="JIKKEN_trigger_7_MultiportSwitch" port="JIKKEN_trigger_7_MultiportSwitch_2"/>
+      </output>
+   </block>
+   <block blocktype="DiscretePulseGenerator" name="JIKKEN_trigger_7_PulseGenerator1" rate="1">
+      <output line="JIKKEN_trigger_7_PulseGenerator1_1" port="JIKKEN_trigger_7_PulseGenerator1_1">
+         <connect block="JIKKEN_trigger_7_MultiportSwitch" port="JIKKEN_trigger_7_MultiportSwitch_3"/>
+      </output>
+   </block>
+   <block blocktype="DiscretePulseGenerator" name="JIKKEN_trigger_7_PulseGenerator2" rate="1">
+      <output line="JIKKEN_trigger_7_PulseGenerator2_1" port="JIKKEN_trigger_7_PulseGenerator2_1">
+         <connect block="JIKKEN_trigger_7_Maketargetvalue" port="JIKKEN_trigger_7_Maketargetvalue_Trigger"/>
+      </output>
+   </block>
+   <block blocktype="DiscretePulseGenerator" name="JIKKEN_trigger_7_PulseGenerator3" rate="1">
+      <output line="JIKKEN_trigger_7_PulseGenerator3_1" port="JIKKEN_trigger_7_PulseGenerator3_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_Trigger"/>
+      </output>
+   </block>
+   <block blocktype="RelationalOperator" name="JIKKEN_trigger_7_RelationalOperator3" rate="-1">
+      <input line="JIKKEN_trigger_7_Constant4_1" port="JIKKEN_trigger_7_RelationalOperator3_1">
+         <connect block="JIKKEN_trigger_7_Constant4" port="JIKKEN_trigger_7_Constant4_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_1" port="JIKKEN_trigger_7_RelationalOperator3_2">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1_rpm"/>
+      </input>
+      <output line="JIKKEN_trigger_7_RelationalOperator3_1" port="JIKKEN_trigger_7_RelationalOperator3_1">
+         <connect block="JIKKEN_trigger_7_Switch" port="JIKKEN_trigger_7_Switch_2"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_Samplesignal">
+      <output line="JIKKEN_trigger_7_Samplesignal_1" port="JIKKEN_trigger_7_Samplesignal_y">
+         <connect block="JIKKEN_trigger_7_Maketargetvalue" port="JIKKEN_trigger_7_Maketargetvalue_In1"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Clock" name="JIKKEN_trigger_7_Samplesignal_Clock1">
+            <output line="JIKKEN_trigger_7_Samplesignal_Clock1_1" port="JIKKEN_trigger_7_Samplesignal_Clock1_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product1" port="JIKKEN_trigger_7_Samplesignal_Product1_1"/>
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product2" port="JIKKEN_trigger_7_Samplesignal_Product2_1"/>
+            </output>
+         </block>
+         <block blocktype="Gain" name="JIKKEN_trigger_7_Samplesignal_Gain" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Product_1" port="JIKKEN_trigger_7_Samplesignal_Gain_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product" port="JIKKEN_trigger_7_Samplesignal_Product_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Gain_1" port="JIKKEN_trigger_7_Samplesignal_Gain_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product1" port="JIKKEN_trigger_7_Samplesignal_Product1_2"/>
+            </output>
+         </block>
+         <block blocktype="Trigonometry" name="JIKKEN_trigger_7_Samplesignal_Output" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Product2_1" port="JIKKEN_trigger_7_Samplesignal_Output_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product2" port="JIKKEN_trigger_7_Samplesignal_Product2_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Output_1" port="JIKKEN_trigger_7_Samplesignal_Output_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_y" port="JIKKEN_trigger_7_Samplesignal_y_1"/>
+            </output>
+         </block>
+         <block blocktype="Product" name="JIKKEN_trigger_7_Samplesignal_Product" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_deltaFreq_1" port="JIKKEN_trigger_7_Samplesignal_Product_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_deltaFreq" port="JIKKEN_trigger_7_Samplesignal_deltaFreq_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_Samplesignal_targetTime_1" port="JIKKEN_trigger_7_Samplesignal_Product_2">
+               <connect block="JIKKEN_trigger_7_Samplesignal_targetTime" port="JIKKEN_trigger_7_Samplesignal_targetTime_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Product_1" port="JIKKEN_trigger_7_Samplesignal_Product_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Gain" port="JIKKEN_trigger_7_Samplesignal_Gain_1"/>
+            </output>
+         </block>
+         <block blocktype="Product" name="JIKKEN_trigger_7_Samplesignal_Product1" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Clock1_1" port="JIKKEN_trigger_7_Samplesignal_Product1_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Clock1" port="JIKKEN_trigger_7_Samplesignal_Clock1_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_Samplesignal_Gain_1" port="JIKKEN_trigger_7_Samplesignal_Product1_2">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Gain" port="JIKKEN_trigger_7_Samplesignal_Gain_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Product1_1" port="JIKKEN_trigger_7_Samplesignal_Product1_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Sum" port="JIKKEN_trigger_7_Samplesignal_Sum_1"/>
+            </output>
+         </block>
+         <block blocktype="Product" name="JIKKEN_trigger_7_Samplesignal_Product2" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Clock1_1" port="JIKKEN_trigger_7_Samplesignal_Product2_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Clock1" port="JIKKEN_trigger_7_Samplesignal_Clock1_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_Samplesignal_Sum_1" port="JIKKEN_trigger_7_Samplesignal_Product2_2">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Sum" port="JIKKEN_trigger_7_Samplesignal_Sum_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Product2_1" port="JIKKEN_trigger_7_Samplesignal_Product2_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Output" port="JIKKEN_trigger_7_Samplesignal_Output_1"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="JIKKEN_trigger_7_Samplesignal_Sum" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Product1_1" port="JIKKEN_trigger_7_Samplesignal_Sum_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product1" port="JIKKEN_trigger_7_Samplesignal_Product1_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_Samplesignal_initialFreq_1" port="JIKKEN_trigger_7_Samplesignal_Sum_2">
+               <connect block="JIKKEN_trigger_7_Samplesignal_initialFreq" port="JIKKEN_trigger_7_Samplesignal_initialFreq_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_Samplesignal_Sum_1" port="JIKKEN_trigger_7_Samplesignal_Sum_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product2" port="JIKKEN_trigger_7_Samplesignal_Product2_2"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_Samplesignal_deltaFreq" rate="inf">
+            <output line="JIKKEN_trigger_7_Samplesignal_deltaFreq_1" port="JIKKEN_trigger_7_Samplesignal_deltaFreq_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product" port="JIKKEN_trigger_7_Samplesignal_Product_1"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_Samplesignal_initialFreq" rate="inf">
+            <output line="JIKKEN_trigger_7_Samplesignal_initialFreq_1" port="JIKKEN_trigger_7_Samplesignal_initialFreq_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Sum" port="JIKKEN_trigger_7_Samplesignal_Sum_2"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_Samplesignal_targetTime" rate="inf">
+            <output line="JIKKEN_trigger_7_Samplesignal_targetTime_1" port="JIKKEN_trigger_7_Samplesignal_targetTime_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Product" port="JIKKEN_trigger_7_Samplesignal_Product_2"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_Samplesignal_y" rate="-1">
+            <input line="JIKKEN_trigger_7_Samplesignal_Output_1" port="JIKKEN_trigger_7_Samplesignal_y_1">
+               <connect block="JIKKEN_trigger_7_Samplesignal_Output" port="JIKKEN_trigger_7_Samplesignal_Output_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+   <block blocktype="Switch" name="JIKKEN_trigger_7_Switch" rate="-1">
+      <input line="JIKKEN_trigger_7_PIDcontroller_changedperiodic_1" port="JIKKEN_trigger_7_Switch_1">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_changedperiodic" port="JIKKEN_trigger_7_PIDcontroller_changedperiodic_PID_out"/>
+      </input>
+      <input line="JIKKEN_trigger_7_RelationalOperator3_1" port="JIKKEN_trigger_7_Switch_2">
+         <connect block="JIKKEN_trigger_7_RelationalOperator3" port="JIKKEN_trigger_7_RelationalOperator3_1"/>
+      </input>
+      <input line="JIKKEN_trigger_7_PIDcontroller_Eventdriven_1" port="JIKKEN_trigger_7_Switch_3">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_PID_out"/>
+      </input>
+      <output line="JIKKEN_trigger_7_Switch_1" port="JIKKEN_trigger_7_Switch_1">
+         <connect block="JIKKEN_trigger_7_PLANT_Motortheta" port="JIKKEN_trigger_7_PLANT_Motortheta_DUMMY_in"/>
+      </output>
+   </block>
+   <block blocktype="SubSystem" name="JIKKEN_trigger_7_triggerfortheta">
+      <input line="JIKKEN_trigger_7_PLANT_Motortheta_1" port="JIKKEN_trigger_7_triggerfortheta_theta">
+         <connect block="JIKKEN_trigger_7_PLANT_Motortheta" port="JIKKEN_trigger_7_PLANT_Motortheta_Theta"/>
+      </input>
+      <output line="JIKKEN_trigger_7_triggerfortheta_1" port="JIKKEN_trigger_7_triggerfortheta_theta_trigger">
+         <connect block="JIKKEN_trigger_7_PIDcontroller_Eventdriven" port="JIKKEN_trigger_7_PIDcontroller_Eventdriven_Trigger"/>
+      </output>
+      <sm:blocks>
+         <block blocktype="Inport" name="JIKKEN_trigger_7_triggerfortheta_theta" rate="-1">
+            <output line="JIKKEN_trigger_7_triggerfortheta_theta_1" port="JIKKEN_trigger_7_triggerfortheta_theta_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1"/>
+            </output>
+         </block>
+         <block blocktype="Sum" name="JIKKEN_trigger_7_triggerfortheta_Add2" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1" port="JIKKEN_trigger_7_triggerfortheta_Add2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_UnitDelay3" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_Switch1_1" port="JIKKEN_trigger_7_triggerfortheta_Add2_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_Add2_1" port="JIKKEN_trigger_7_triggerfortheta_Add2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_2"/>
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch2" port="JIKKEN_trigger_7_triggerfortheta_Switch2_3"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_triggerfortheta_Constant4" rate="inf">
+            <output line="JIKKEN_trigger_7_triggerfortheta_Constant4_1" port="JIKKEN_trigger_7_triggerfortheta_Constant4_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_triggerfortheta_Constant7" rate="inf">
+            <output line="JIKKEN_trigger_7_triggerfortheta_Constant7_1" port="JIKKEN_trigger_7_triggerfortheta_Constant7_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch2" port="JIKKEN_trigger_7_triggerfortheta_Switch2_1"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_theta_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_theta" port="JIKKEN_trigger_7_triggerfortheta_theta_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_UnitDelay3" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_2"/>
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch3" port="JIKKEN_trigger_7_triggerfortheta_Switch3_2"/>
+               <connect block="JIKKEN_trigger_7_triggerfortheta_theta_trigger" port="JIKKEN_trigger_7_triggerfortheta_theta_trigger_1"/>
+            </output>
+         </block>
+         <block blocktype="RelationalOperator" name="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_Constant4_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Constant4" port="JIKKEN_trigger_7_triggerfortheta_Constant4_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_Add2_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Add2" port="JIKKEN_trigger_7_triggerfortheta_Add2_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch2" port="JIKKEN_trigger_7_triggerfortheta_Switch2_2"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="JIKKEN_trigger_7_triggerfortheta_Switch1" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_theta_step_1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_theta_step" port="JIKKEN_trigger_7_triggerfortheta_theta_step_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_genten_1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_3">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_genten" port="JIKKEN_trigger_7_triggerfortheta_genten_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_Switch1_1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Add2" port="JIKKEN_trigger_7_triggerfortheta_Add2_2"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="JIKKEN_trigger_7_triggerfortheta_Switch2" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_Constant7_1" port="JIKKEN_trigger_7_triggerfortheta_Switch2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Constant7" port="JIKKEN_trigger_7_triggerfortheta_Constant7_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1" port="JIKKEN_trigger_7_triggerfortheta_Switch2_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator3_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_Add2_1" port="JIKKEN_trigger_7_triggerfortheta_Switch2_3">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Add2" port="JIKKEN_trigger_7_triggerfortheta_Add2_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_Switch2_1" port="JIKKEN_trigger_7_triggerfortheta_Switch2_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch3" port="JIKKEN_trigger_7_triggerfortheta_Switch3_1"/>
+            </output>
+         </block>
+         <block blocktype="Switch" name="JIKKEN_trigger_7_triggerfortheta_Switch3" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_Switch2_1" port="JIKKEN_trigger_7_triggerfortheta_Switch3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch2" port="JIKKEN_trigger_7_triggerfortheta_Switch2_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1" port="JIKKEN_trigger_7_triggerfortheta_Switch3_2">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1"/>
+            </input>
+            <input line="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1" port="JIKKEN_trigger_7_triggerfortheta_Switch3_3">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_UnitDelay3" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_Switch3_1" port="JIKKEN_trigger_7_triggerfortheta_Switch3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_UnitDelay3" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1"/>
+            </output>
+         </block>
+         <block blocktype="UnitDelay" name="JIKKEN_trigger_7_triggerfortheta_UnitDelay3" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_Switch3_1" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch3" port="JIKKEN_trigger_7_triggerfortheta_Switch3_1"/>
+            </input>
+            <output line="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1" port="JIKKEN_trigger_7_triggerfortheta_UnitDelay3_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Add2" port="JIKKEN_trigger_7_triggerfortheta_Add2_1"/>
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_2"/>
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch3" port="JIKKEN_trigger_7_triggerfortheta_Switch3_3"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_triggerfortheta_genten" rate="inf">
+            <output line="JIKKEN_trigger_7_triggerfortheta_genten_1" port="JIKKEN_trigger_7_triggerfortheta_genten_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_3"/>
+            </output>
+         </block>
+         <block blocktype="Constant" name="JIKKEN_trigger_7_triggerfortheta_theta_step" rate="inf">
+            <output line="JIKKEN_trigger_7_triggerfortheta_theta_step_1" port="JIKKEN_trigger_7_triggerfortheta_theta_step_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_Switch1" port="JIKKEN_trigger_7_triggerfortheta_Switch1_1"/>
+            </output>
+         </block>
+         <block blocktype="Outport" name="JIKKEN_trigger_7_triggerfortheta_theta_trigger" rate="-1">
+            <input line="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1" port="JIKKEN_trigger_7_triggerfortheta_theta_trigger_1">
+               <connect block="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2" port="JIKKEN_trigger_7_triggerfortheta_RelationalOperator2_1"/>
+            </input>
+         </block>
+      </sm:blocks>
+   </block>
+</sm:blocks>

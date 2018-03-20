@@ -1,0 +1,16 @@
+digraph testout {
+	subgraph mfunction2_MATLABFunction1 {
+		graph [label=mfunction2_MATLABFunction1];
+		t5		 [label="t5\nmfunction2_MATLABFunction1_SFunction"];
+	}
+	t1	 [label="t1\nmfunction2_y2",
+		shape=box];
+	t9	 [label="t9\nmfunction2_mul1"];
+	t1 -> t9	 [label=mfunction2_y2_1];
+	t10	 [label="t10\nmfunction2_y2_out",
+		shape=box];
+	t5 -> t10	 [label=mfunction2_MATLABFunction1_SFunction_y];
+	t8	 [label="t8\nmfunction2_k1"];
+	t8 -> t9	 [label=mfunction2_k1_1];
+	t9 -> t5	 [label=mfunction2_mul1_1];
+}

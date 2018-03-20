@@ -1,0 +1,16 @@
+make -C ../measurement_cforest -f measurement.mk copy
+make[1]: ディレクトリ `/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/measurement_cforest' に入ります
+make[1]: `copy' に対して行うべき事はありません.
+make[1]: ディレクトリ `/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/measurement_cforest' から出ます
+make -C ../measurement_cforest -f measurement.mk all
+make[1]: ディレクトリ `/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/measurement_cforest' に入ります
+v850-elf-gcc -g -mv850e2v4 -I. -Ilib -Iinclude -I/home/kohei-y/src/github/NIS/Simulink_XSD/models/Fibonacci -DCFOREST=1  -c -o /home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure.o /home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure.c
+In file included from /home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure.c:21:0:
+/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure_cforest.h: In function 'main':
+/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure_cforest.h:51:19: error: 'COUNT' undeclared (first use in this function)
+/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure_cforest.h:51:19: note: each undeclared identifier is reported only once for each function it appears in
+/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure_cforest.h:57:9: error: 'measure_counted' undeclared (first use in this function)
+/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure_cforest.h:60:7: error: 'measure_cycles' undeclared (first use in this function)
+make[1]: *** [/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/Fibonacci/measure.o] エラー 1
+make[1]: ディレクトリ `/home/kohei-y/src/github/NIS/Simulink_XSD/java/samples/RTW_Measurement/measurement_cforest' から出ます
+make: *** [all] エラー 2
