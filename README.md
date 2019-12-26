@@ -1,5 +1,6 @@
 ```
-How To Checkout
+This repository is git large file system for git-hub.
+So write how to checkout git lfs. 
 
 i) if not install git-lfs, please install git-lfs as follows
   case 1: Ubuntu18.04
