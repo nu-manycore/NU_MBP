@@ -1,45 +1,45 @@
-i‚PjVMƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚éVirtualBox-5.2.18-124319-Win.exe‚ðƒ_ƒuƒ‹ƒNƒŠƒbƒN‚µOracle VM VirtualBox‚ðƒCƒ“ƒXƒg[ƒ‹
-i‚QjVMƒfƒBƒŒƒNƒgƒŠ‚É‚ ‚éLXDE_Ubuntu1804.7z‚ð‰ð“€
-i‚RjOracle VM VirtualBoxƒ}ƒl[ƒWƒƒ[‚ð‹N“®‚µuV‹K(N)v‚ð‰Ÿ‰º
-i‚Sj–¼‘O‚ð“ü—Í‚µAƒ^ƒCƒv‚ÍLinuxAƒo[ƒWƒ‡ƒ“‚ÍUbuntu(64-bit)‚ð‘I‘ð‚µAuŽŸ‚Ö(N)v‚ð‰Ÿ‰º
-i‚Tjƒƒ‚ƒŠƒTƒCƒY‚Í4GBˆÈã‚ðÝ’è‚µAuŽŸ‚Ö(N)v‚ð‰Ÿ‰º
-i‚Ujƒn[ƒhƒfƒBƒXƒN‚Íu‚·‚Å‚É‚ ‚é‰¼‘zƒn[ƒhƒfƒBƒXƒN‚ðŽg—p‚·‚év‚Éƒ`ƒFƒbƒN‚ð“ü‚êAi‚Qj‚Å‰ñ“š‚µ‚½vdiƒCƒ[ƒW‚ð‘I‘ð
-i‚Vjuì¬v‚ð‰Ÿ‰º
-i‚Wji‚Vj‚Åì¬‚µ‚½‰¼‘zƒ}ƒVƒ“‚ð‘I‘ð‚µAuÝ’è(S)v‚ð‰Ÿ‰º
-i‚Xjˆê”Ê -> ‚“x(a)ƒ^ƒu‚ð‘I‘ð‚µAƒNƒŠƒbƒvƒ{[ƒh‚Ì‹¤—L‚Æƒhƒ‰ƒbƒO•ƒhƒƒbƒv‚Å‘o•ûŒü‚ð‘I‘ð
-i‚P‚OjƒVƒXƒeƒ€ -> ƒvƒƒZƒbƒT[(P)ƒ^ƒu‚ð‘I‘ð‚µAƒvƒƒZƒbƒT”‚ð2ˆÈã‚ÉÝ’è
-i‚P‚PjƒfƒBƒXƒvƒŒƒC -> ƒXƒNƒŠ[ƒ“(S)ƒ^ƒu‚ð‘I‘ð‚µAƒrƒfƒIƒƒ‚ƒŠ[‚ð128MB‚ÉÝ’è
-i‚P‚Qj‹¤—LƒtƒHƒ‹ƒ_‚Å{‚Ì•t‚¢‚½ƒfƒBƒŒƒNƒgƒŠƒAƒCƒRƒ“‚ð‰Ÿ‰º
-i‚P‚Rj‹¤—LƒtƒHƒ‹ƒ_‚Ì’Ç‰Áƒ_ƒCƒAƒƒO‚ÅWindows‚ÆLinux‚Å‹¤—L‚·‚éƒtƒHƒ‹ƒ_‚ð‘I‘ð‚µAŽ©“®ƒ}ƒEƒ“ƒg(A)‚Éƒ`ƒFƒbƒN
-i‚P‚Sj‹¤—LƒtƒHƒ‹ƒ_‚Ì’Ç‰Áƒ_ƒCƒAƒƒO‚ÅuOKv‚ð‰Ÿ‰º
-i‚P‚Tji‚Wj‚ÅŠJ‚¢‚Ä‚¢‚éuÝ’èvƒ_ƒCƒAƒƒO‚ÅuOKv‚ð‰Ÿ‰º
-i‚P‚Uju‹N“®(T)v‚ð‰Ÿ‰º‚µALinux‚ð‹N“®
-i‚P‚VjLinux‚ª‹N“®‚µ‚½‚çAƒpƒXƒ[ƒhmbp‚ð“ü—Í‚µ‚ÄƒƒOƒCƒ“
-i‚P‚Wj‹N“®‚µ‚½‰¼‘zƒ}ƒVƒ“‚Ìƒ_ƒCƒAƒƒO‚ÅuƒfƒoƒCƒXv->Guest Addtions CDƒCƒ[ƒW‚Ì‘}“ü‚ð‘I‘ð
-i‚P‚XjRemovable medium is inserted‚Ìƒ_ƒCƒAƒƒO‚ª•\Ž¦‚³‚ê‚½‚çAuOKv‚ð‰Ÿ‰º
-i‚Q‚OjLXTerminal‚ð‹N“®‚µAcd /media/mbp/VBox_GAs_5.2.18
-i‚Q‚Pji‚Q‚Oj‚Åcd‚µ‚½LXTerminal‚æ‚èsudo ./VBoxLinuxAdditions.run‚ðŽÀs(sudoƒpƒXƒ[ƒh‚Ímbp)
-i‚Q‚QjVirtualBox Guest Additions: Starting.‚ª•\Ž¦‚³‚ê‚½‚çAsudo usermod -G vboxsf -a mbp‚Åvboxsf‚ÉƒAƒJƒEƒ“ƒg“o˜^
-i‚Q‚RjLXTerminal‚ðexit‚µA‰¼‘zƒ}ƒVƒ“‚ðshutdown
-i‚Q‚Sji‚Q‚Rj‚Åshutdown‚µ‚½‰¼‘zƒ}ƒVƒ“‚ð‘I‘ð‚µAuÝ’è(S)v‚ð‰Ÿ‰º
-i‚Q‚TjƒXƒgƒŒ[ƒW -> ƒRƒ“ƒgƒ[ƒ‰[FIDE‚Å•\Ž¦‚³‚ê‚Ä‚¢‚éVBoxGuestAdditions.iso‚ðíœ
-i‚Q‚UjŒõŠwƒhƒ‰ƒCƒu‚ðíœ‚µ‚Ü‚·‚©H‚Æ‚¢‚¤ƒ_ƒCƒAƒƒO‚ª•\Ž¦‚³‚ê‚é‚Ì‚ÅAuœ‹Ž(R)v‚ð‰Ÿ‰º
-i‚Q‚Vji‚Q‚Sj‚Å•\Ž¦‚µ‚½Ý’èƒ_ƒCƒAƒƒO‚ÌuOKv‚ð‰Ÿ‰º
-i‚Q‚WjÄ“x‰¼‘zƒ}ƒVƒ“‚ð‹N“®
-i‚Q‚XjƒpƒXƒ[ƒhmbp‚ð“ü—Í‚µAƒƒOƒCƒ“‚µ‚½‚ç‰æ–Ê‚É‹¤—LƒfƒBƒŒƒNƒgƒŠƒtƒHƒ‹ƒ_‚ª”z’u‚³‚ê‚Ä‚¢‚é‚Ì‚Åƒ_ƒuƒ‹ƒNƒŠƒbƒN
-i‚R‚OjƒGƒNƒXƒvƒ[ƒ‰[‚Å–â‘è‚È‚­•\Ž¦‚³‚ê‚½‚çLinux‚ÌÝ’è‚ÍŠ®—¹
+ï¼ˆï¼‘ï¼‰VMãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹VirtualBox-5.2.18-124319-Win.exeã‚’ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯ã—Oracle VM VirtualBoxã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
+ï¼ˆï¼’ï¼‰VMãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ã‚ã‚‹LXDE_Ubuntu1804.7zã‚’è§£å‡
+ï¼ˆï¼“ï¼‰Oracle VM VirtualBoxãƒžãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚’èµ·å‹•ã—ã€Œæ–°è¦(N)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼”ï¼‰åå‰ã‚’å…¥åŠ›ã—ã€ã‚¿ã‚¤ãƒ—ã¯Linuxã€ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯Ubuntu(64-bit)ã‚’é¸æŠžã—ã€ã€Œæ¬¡ã¸(N)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼•ï¼‰ãƒ¡ãƒ¢ãƒªã‚µã‚¤ã‚ºã¯4GBä»¥ä¸Šã‚’è¨­å®šã—ã€ã€Œæ¬¡ã¸(N)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼–ï¼‰ãƒãƒ¼ãƒ‰ãƒ‡ã‚£ã‚¹ã‚¯ã¯ã€Œã™ã§ã«ã‚ã‚‹ä»®æƒ³ãƒãƒ¼ãƒ‰ãƒ‡ã‚£ã‚¹ã‚¯ã‚’ä½¿ç”¨ã™ã‚‹ã€ã«ãƒã‚§ãƒƒã‚¯ã‚’å…¥ã‚Œã€ï¼ˆï¼’ï¼‰ã§å›žç­”ã—ãŸvdiã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’é¸æŠž
+ï¼ˆï¼—ï¼‰ã€Œä½œæˆã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼˜ï¼‰ï¼ˆï¼—ï¼‰ã§ä½œæˆã—ãŸä»®æƒ³ãƒžã‚·ãƒ³ã‚’é¸æŠžã—ã€ã€Œè¨­å®š(S)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼™ï¼‰ä¸€èˆ¬ -> é«˜åº¦(a)ã‚¿ãƒ–ã‚’é¸æŠžã—ã€ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰ã®å…±æœ‰ã¨ãƒ‰ãƒ©ãƒƒã‚°ï¼†ãƒ‰ãƒ­ãƒƒãƒ—ã§åŒæ–¹å‘ã‚’é¸æŠž
+ï¼ˆï¼‘ï¼ï¼‰ã‚·ã‚¹ãƒ†ãƒ  -> ãƒ—ãƒ­ã‚»ãƒƒã‚µãƒ¼(P)ã‚¿ãƒ–ã‚’é¸æŠžã—ã€ãƒ—ãƒ­ã‚»ãƒƒã‚µæ•°ã‚’2ä»¥ä¸Šã«è¨­å®š
+ï¼ˆï¼‘ï¼‘ï¼‰ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ -> ã‚¹ã‚¯ãƒªãƒ¼ãƒ³(S)ã‚¿ãƒ–ã‚’é¸æŠžã—ã€ãƒ“ãƒ‡ã‚ªãƒ¡ãƒ¢ãƒªãƒ¼ã‚’128MBã«è¨­å®š
+ï¼ˆï¼‘ï¼’ï¼‰å…±æœ‰ãƒ•ã‚©ãƒ«ãƒ€ã§ï¼‹ã®ä»˜ã„ãŸãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚¢ã‚¤ã‚³ãƒ³ã‚’æŠ¼ä¸‹
+ï¼ˆï¼‘ï¼“ï¼‰å…±æœ‰ãƒ•ã‚©ãƒ«ãƒ€ã®è¿½åŠ ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§Windowsã¨Linuxã§å…±æœ‰ã™ã‚‹ãƒ•ã‚©ãƒ«ãƒ€ã‚’é¸æŠžã—ã€è‡ªå‹•ãƒžã‚¦ãƒ³ãƒˆ(A)ã«ãƒã‚§ãƒƒã‚¯
+ï¼ˆï¼‘ï¼”ï¼‰å…±æœ‰ãƒ•ã‚©ãƒ«ãƒ€ã®è¿½åŠ ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ã€ŒOKã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼‘ï¼•ï¼‰ï¼ˆï¼˜ï¼‰ã§é–‹ã„ã¦ã„ã‚‹ã€Œè¨­å®šã€ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ã€ŒOKã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼‘ï¼–ï¼‰ã€Œèµ·å‹•(T)ã€ã‚’æŠ¼ä¸‹ã—ã€Linuxã‚’èµ·å‹•
+ï¼ˆï¼‘ï¼—ï¼‰LinuxãŒèµ·å‹•ã—ãŸã‚‰ã€ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰mbpã‚’å…¥åŠ›ã—ã¦ãƒ­ã‚°ã‚¤ãƒ³
+ï¼ˆï¼‘ï¼˜ï¼‰èµ·å‹•ã—ãŸä»®æƒ³ãƒžã‚·ãƒ³ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ã€Œãƒ‡ãƒã‚¤ã‚¹ã€->Guest Addtions CDã‚¤ãƒ¡ãƒ¼ã‚¸ã®æŒ¿å…¥ã‚’é¸æŠž
+ï¼ˆï¼‘ï¼™ï¼‰Removable medium is insertedã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºã•ã‚ŒãŸã‚‰ã€ã€ŒOKã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼’ï¼ï¼‰LXTerminalã‚’èµ·å‹•ã—ã€cd /media/mbp/VBox_GAs_5.2.18
+ï¼ˆï¼’ï¼‘ï¼‰ï¼ˆï¼’ï¼ï¼‰ã§cdã—ãŸLXTerminalã‚ˆã‚Šsudo ./VBoxLinuxAdditions.runã‚’å®Ÿè¡Œ(sudoãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã¯mbp)
+ï¼ˆï¼’ï¼’ï¼‰VirtualBox Guest Additions: Starting.ãŒè¡¨ç¤ºã•ã‚ŒãŸã‚‰ã€sudo usermod -G vboxsf -a mbpã§vboxsfã«ã‚¢ã‚«ã‚¦ãƒ³ãƒˆç™»éŒ²
+ï¼ˆï¼’ï¼“ï¼‰LXTerminalã‚’exitã—ã€ä»®æƒ³ãƒžã‚·ãƒ³ã‚’shutdown
+ï¼ˆï¼’ï¼”ï¼‰ï¼ˆï¼’ï¼“ï¼‰ã§shutdownã—ãŸä»®æƒ³ãƒžã‚·ãƒ³ã‚’é¸æŠžã—ã€ã€Œè¨­å®š(S)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼’ï¼•ï¼‰ã‚¹ãƒˆãƒ¬ãƒ¼ã‚¸ -> ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ï¼šIDEã§è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹VBoxGuestAdditions.isoã‚’å‰Šé™¤
+ï¼ˆï¼’ï¼–ï¼‰å…‰å­¦ãƒ‰ãƒ©ã‚¤ãƒ–ã‚’å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿã¨ã„ã†ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã®ã§ã€ã€Œé™¤åŽ»(R)ã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼’ï¼—ï¼‰ï¼ˆï¼’ï¼”ï¼‰ã§è¡¨ç¤ºã—ãŸè¨­å®šãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã®ã€ŒOKã€ã‚’æŠ¼ä¸‹
+ï¼ˆï¼’ï¼˜ï¼‰å†åº¦ä»®æƒ³ãƒžã‚·ãƒ³ã‚’èµ·å‹•
+ï¼ˆï¼’ï¼™ï¼‰ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰mbpã‚’å…¥åŠ›ã—ã€ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸã‚‰ç”»é¢ã«å…±æœ‰ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãƒ•ã‚©ãƒ«ãƒ€ãŒé…ç½®ã•ã‚Œã¦ã„ã‚‹ã®ã§ãƒ€ãƒ–ãƒ«ã‚¯ãƒªãƒƒã‚¯
+ï¼ˆï¼“ï¼ï¼‰ã‚¨ã‚¯ã‚¹ãƒ—ãƒ­ãƒ¼ãƒ©ãƒ¼ã§å•é¡Œãªãè¡¨ç¤ºã•ã‚ŒãŸã‚‰Linuxã®è¨­å®šã¯å®Œäº†
 
-ˆÈ‰º‚ÍŽè“®‚ÅProxyÝ’è‚ª•K—v‚Èê‡
-ƒzƒXƒgOS‘¤(Windows)Ý’è
-i‚R‚Pj‰¼‘zƒ}ƒVƒ“‚ðŽÀs‚µ‚Ä‚¢‚éƒ_ƒCƒAƒƒO‚Åuƒtƒ@ƒCƒ‹v->uŠÂ‹«Ý’èv‚ð‘I‘ð
-i‚R‚QjVirtualBoxŠÂ‹«Ý’èƒ_ƒCƒAƒƒO‚ª•\Ž¦‚³‚ê‚é‚Ì‚ÅAƒvƒƒLƒV[‚ð‘I‘ð
-i‚R‚RjŽè“®ƒvƒƒLƒV[Ý’è‚ð‘I‘ð‚µAƒzƒXƒg‚Æƒ|[ƒg‚ð“ü—Í‚µ‚ÄuOKv‚ð‰Ÿ‰º
+ä»¥ä¸‹ã¯æ‰‹å‹•ã§Proxyè¨­å®šãŒå¿…è¦ãªå ´åˆ
+ï¼ãƒ›ã‚¹ãƒˆOSå´(Windows)è¨­å®šï¼
+ï¼ˆï¼“ï¼‘ï¼‰ä»®æƒ³ãƒžã‚·ãƒ³ã‚’å®Ÿè¡Œã—ã¦ã„ã‚‹ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ã€Œãƒ•ã‚¡ã‚¤ãƒ«ã€->ã€Œç’°å¢ƒè¨­å®šã€ã‚’é¸æŠž
+ï¼ˆï¼“ï¼’ï¼‰VirtualBoxç’°å¢ƒè¨­å®šãƒ€ã‚¤ã‚¢ãƒ­ã‚°ãŒè¡¨ç¤ºã•ã‚Œã‚‹ã®ã§ã€ãƒ—ãƒ­ã‚­ã‚·ãƒ¼ã‚’é¸æŠž
+ï¼ˆï¼“ï¼“ï¼‰æ‰‹å‹•ãƒ—ãƒ­ã‚­ã‚·ãƒ¼è¨­å®šã‚’é¸æŠžã—ã€ãƒ›ã‚¹ãƒˆã¨ãƒãƒ¼ãƒˆã‚’å…¥åŠ›ã—ã¦ã€ŒOKã€ã‚’æŠ¼ä¸‹
 
-ƒQƒXƒgOS‘¤(Linux)Ý’è
-i‚R‚SjMBPToolchainInstallerƒfƒBƒŒƒNƒgƒŠ‚ð‹¤—LƒtƒHƒ‹ƒ_‚ÉƒRƒs[
-i‚R‚TjLXTerminal‚ð‹N“®‚µAMBPToolchainInstallerƒfƒBƒŒƒNƒgƒŠ‚Écd
-i‚R‚Uj./Set_1_Ubuntu1804Proxy.sh
-i‚R‚Vji‚R‚Rj‚Å“ü—Í‚µ‚½ƒzƒXƒg‚Æƒ|[ƒg‚ð“ü—Í
-i‚R‚UjLXTerminal‚ðexit‚µA‰¼‘zƒ}ƒVƒ“‚ðshutdownŒãAOracle VM VirtualBoxƒ}ƒl[ƒWƒƒ[‚©‚çÄ“x‹N“®
-i‚R‚Vj‰¼‘zƒ}ƒVƒ“‚ÉƒƒOƒCƒ“‚µ‚½‚çping‚ÅŠO‚Ì¢ŠE‚Æ’ÊM‚Å‚«‚Ä‚¢‚é‚±‚Æ‚ðŠm”F
+ï¼ã‚²ã‚¹ãƒˆOSå´(Linux)è¨­å®šï¼
+ï¼ˆï¼“ï¼”ï¼‰EMCRelease1.xx.yyãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’Windows-VMå…±æœ‰ãƒ•ã‚©ãƒ«ãƒ€ã«ã‚³ãƒ”ãƒ¼
+ï¼ˆï¼“ï¼•ï¼‰LXTerminalã‚’èµ·å‹•ã—ã€EMCRelease1.xx.yyãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«cd
+ï¼ˆï¼“ï¼–ï¼‰./Set_1_Ubuntu1804Proxy.sh
+ï¼ˆï¼“ï¼—ï¼‰ï¼ˆï¼“ï¼“ï¼‰ã§å…¥åŠ›ã—ãŸãƒ›ã‚¹ãƒˆã¨ãƒãƒ¼ãƒˆã‚’å…¥åŠ›
+ï¼ˆï¼“ï¼–ï¼‰LXTerminalã‚’exitã—ã€ä»®æƒ³ãƒžã‚·ãƒ³ã‚’shutdownå¾Œã€Oracle VM VirtualBoxãƒžãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‹ã‚‰å†åº¦èµ·å‹•
+ï¼ˆï¼“ï¼—ï¼‰ä»®æƒ³ãƒžã‚·ãƒ³ã«ãƒ­ã‚°ã‚¤ãƒ³ã—ãŸã‚‰pingã§å¤–ã®ä¸–ç•Œã¨é€šä¿¡ã§ãã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª
 
