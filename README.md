@@ -1,6 +1,5 @@
-# How To Checkout
-
----
+```
+How To Checkout
 
 i) if not install git-lfs as follows
   case 1: Ubuntu18.04
@@ -22,5 +21,4 @@ iii) checkout NU_MBP
     > git remote add origin https://github.com/nu-manycore/NU_MBP.git
     > git fetch
     > git merge origin/master
-
----
+```
