@@ -1,7 +1,7 @@
 ```
 How To Checkout
 
-i) if not install git-lfs as follows
+i) if not install git-lfs, please install git-lfs as follows
   case 1: Ubuntu18.04
     > sudo apt-get update
     > sudo apt-get install git-lfs
